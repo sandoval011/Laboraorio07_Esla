@@ -57,7 +57,7 @@ mongoose.connect('mongodb://0.0.0.0:27017/mydatabase', {
   // Ruta para renderizar la plantilla
   app.get('/', (req, res) => {
       const user = {
-          name: 'Carlos Alfaro',
+          name: 'ADMIN ESLA',
           role: 'Web Developer'
       };
 

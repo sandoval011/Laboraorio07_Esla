@@ -131,7 +131,7 @@ mongoose.connect('mongodb://0.0.0.0:27017/mydatabase', {
         }
     ];
   
-      const dashboardText = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit nostrum rerum animi natus beatae ex. Culpa blanditiis tempore amet alias placeat, obcaecati quaerat ullam, sunt est, odio aut veniam ratione.';
+      const dashboardText = 'En este panel, encontrarás una amplia selección de hoteles para satisfacer tus necesidades de alojamiento en diferentes destinos. Ya sea que estés planeando unas vacaciones familiares, un viaje de negocios o una escapada romántica, tenemos el lugar perfecto para ti.';
   
       const tiles = [
           {

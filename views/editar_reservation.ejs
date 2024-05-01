@@ -83,7 +83,7 @@
                 </h3>
             </div>
             <div class="container-fluid">
-                <form id="reservationForm" action="/reservations/<%= reservation._id %>/editar" method="POST" class="form-neon" autocomplete="off">
+                <form id="reservationForm" action="/reservations/<%= reservation._id %>/editar" method="POST" class="form-neon" autocomplete="off" onsubmit="return validateForm()">
                     <fieldset>
                         <legend><i class="fas fa-user"></i> &nbsp; Información básica</legend>
                         <div class="container-fluid">
@@ -91,7 +91,7 @@
                                 <div class="col-12 col-md-6">
                                     <div class="form-group">
                                         <label for="date_reservation">Fecha de Reserva:</label>
-                                        <input type="date" class="form-control" id="date_reservation" name="date_reservation" data-original-value="<%= reservation.date_reservation %>" readonly>
+                                        <input type="date" class="form-control" id="date_reservation" name="date_reservation" required>
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-6">
@@ -130,13 +130,13 @@
                                 <div class="col-12 col-md-4">
                                     <div class="form-group">
                                         <label for="date_start">Fecha de Inicio:</label>
-                                        <input type="date" id="date_start" name="date_start" class="form-control" readonly required>
+                                        <input type="date" id="date_start" name="date_start" class="form-control"  required>
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-4">
                                     <div class="form-group">
                                         <label for="date_end">Fecha de Fin:</label>
-                                        <input type="date" id="date_end" name="date_end" class="form-control" readonly required>
+                                        <input type="date" id="date_end" name="date_end" class="form-control"  required>
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-4">
@@ -148,61 +148,51 @@
                                 <div class="col-12 col-md-4">
                                     <div class="form-group">
                                         <label for="price">Precio:</label>
-                                        <input type="number" id="price" name="price" value="<%= reservation.price %>" class="form-control" required>
+                                        <input type="number" id="price" name="price" value="<%= reservation.price %>" class="form-control" required step="0.01" min="0" max="99999.99">
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </fieldset>
                     <br>
+
                     <p class="text-center" style="margin-top: 40px;">
-                        <button type="submit" class="btn btn-raised btn-secondary btn-sm"><i class="bi bi-x-circle-fill"></i> &nbsp; CANCELAR</button>
-                        &nbsp; &nbsp;
-                        <button type="submit" class="btn btn-raised btn-info btn-sm"><i class="bi bi-pencil-square"></i> &nbsp; ACTUALIZAR</button>
-                    </p>
+						<button type="button" class="btn btn-raised btn-secondary btn-sm" onclick="window.location.href='/reservations'"><i class="bi bi-x-circle-fill"></i> &nbsp; CANCELAR</button>
+						&nbsp; &nbsp;
+
+						<button type="submit" class="btn btn-raised btn-info btn-sm">
+						<i class="bi bi-pencil-square"></i> &nbsp; ACTUALIZAR
+					   </button>
+					</p>
                 </form>
             </div>
         </section>
     </main>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var reservationDate = '<%= reservation.date_reservation %>';
+            var dateObject = new Date(reservationDate);
+            var formattedDate = dateObject.toISOString().split('T')[0]; 
+            document.getElementById('date_reservation').value = formattedDate;
+        });
+    </script>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            document.getElementById('reservationForm').addEventListener('submit', function (event) {
-                event.preventDefault();
-    
-                // Obtenemos los valores de los campos
-                var dateReservation = document.getElementById('date_reservation').value;
-                var tourId = document.getElementById('tour_id').value;
-                var hotelId = document.getElementById('hotel_id').value;
-                var customerId = document.getElementById('customer_id').value;
-                var dateStart = document.getElementById('date_start').value;
-                var dateEnd = document.getElementById('date_end').value;
-                var totalDays = document.getElementById('total_days').value;
-                var price = document.getElementById('price').value;
-    
-                // Comparamos los valores con los valores originales para detectar cambios
-                if (dateReservation === "<%= reservation.date_reservation %>" &&
-                    tourId === "<%= reservation.tour_id %>" &&
-                    hotelId === "<%= reservation.hotel_id %>" &&
-                    customerId === "<%= reservation.customer_id %>" &&
-                    dateStart === "<%= reservation.date_start %>" &&
-                    dateEnd === "<%= reservation.date_end %>" &&
-                    totalDays === "<%= reservation.total_days %>" &&
-                    price === "<%= reservation.price %>") {
-                    // Si no hay cambios, mostramos la alerta
-                    Swal.fire({
-                        icon: 'info',
-                        title: 'Sin cambios',
-                        text: 'No se ha realizado ningún cambio en la reserva.',
-                        confirmButtonText: 'Aceptar'
-                    });
-                } else {
-                    // Si hay cambios, el formulario se enviará normalmente
-                    this.submit();
-                }
-            });
+        document.addEventListener('DOMContentLoaded', function() {
+            var startDate = '<%= reservation.date_start %>';
+            var endDate = '<%= reservation.date_end %>';
+        
+            if (startDate) {
+                var startDateFormat = new Date(startDate).toISOString().split('T')[0];
+                document.getElementById('date_start').value = startDateFormat;
+            }
+        
+            if (endDate) {
+                var endDateFormat = new Date(endDate).toISOString().split('T')[0];
+                document.getElementById('date_end').value = endDateFormat;
+            }
         });
-        </script>
+    </script>
     
    
     
@@ -226,22 +216,33 @@
 
     <script src="/js/sweetalert2.min.js"></script>
 
-    <script>
-        // Función para manejar el evento submit del formulario
-        document.getElementById('reservationForm').addEventListener('submit', function (event) {
-            event.preventDefault();
+   <script>
+    function validateForm() {
+        var formChanged = document.querySelectorAll('.changed').length > 0;
 
+        if (formChanged) {
+            alert("¡El formulario se ha actualizado correctamente!");
+            return true;
+        } else {
+            alert("No se ha modificado ningún campo. No se puede actualizar.");
+            return false;
+        }
+    }
 
-            setTimeout(function () {
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Reserva guardada',
-                    text: 'La reserva se ha guardado correctamente.',
-                    confirmButtonText: 'Aceptar'
-                });
-            }, 1000);
+    document.addEventListener('DOMContentLoaded', function() {
+        var formFields = document.querySelectorAll('#reservationForm input, #reservationForm select');
+        formFields.forEach(function(field) {
+            field.addEventListener('change', function() {
+                field.classList.add('changed');
+            });
         });
-    </script>
+    });
+</script>
+
+
+    
+    
+    
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
 
 

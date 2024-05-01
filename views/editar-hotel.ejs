@@ -96,26 +96,26 @@
 							<div class="row">
 								<div class="col-12 col-md-6">
 									<div class="form-group">
-										<label for="cliente_dni" class="bmd-label-floating">Nombre del hotel</label>
+										<label for="name" class="bmd-label-floating">Nombre del hotel</label>
 										<input type="text" pattern="[a-zA-Z0-9-]{1,27}" class="form-control" id="name" name="name" value="<%= hotel.name %>" required maxlength="27">
 									</div>
 								</div>
 								<div class="col-12 col-md-6">
 									<div class="form-group">
-										<label for="cliente_nombre" class="bmd-label-floating">Dirección</label>
-										<input type="text" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{1,40}" class="form-control" value="<%= hotel.address %>" name="address" id="address" required  maxlength="40">
+										<label for="address" class="bmd-label-floating">Dirección</label>
+										<input type="text" class="form-control" value="<%= hotel.address %>" name="address" id="address" required  maxlength="40">
 									</div>
 								</div>
 								<div class="col-12 col-md-4">
 									<div class="form-group">
-										<label for="cliente_apellido" class="bmd-label-floating">Valoración</label>
-										<input type="number" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{1,40}" class="form-control" value="<%= hotel.rating %>" name="rating" id="rating" required maxlength="40">
+										<label for="rating" class="bmd-label-floating">Valoración</label>
+										<input type="number" class="form-control" value="<%= hotel.rating %>" name="rating" id="rating" required min="1" max="5" step="1">
 									</div>
 								</div>
 								<div class="col-12 col-md-4">
 									<div class="form-group">
 										<label for="cliente_telefono" class="bmd-label-floating">Precio</label>
-										<input type="number" pattern="[0-9()+]{1,20}" class="form-control" value="<%= hotel.price %>" name="price" id="price" required maxlength="20">
+										<input type="number" class="form-control" value="<%= hotel.price %>" name="price" id="price" required step="0.01" min="0" max="99999.99">
 									</div>
 								</div>
 							</div>

@@ -27,6 +27,8 @@
 
     <!-- General Styles -->
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css">
+
     
 </head>
 
@@ -142,132 +144,115 @@
                 </h3>
             </div>
             <div class="container-fluid">
-                <form  action="/reservations/<%= reservation._id %>/editar" method="POST" class="form-neon" autocomplete="off">
+                <form id="reservationForm" action="/reservations/<%= reservation._id %>/editar" method="POST" class="form-neon" autocomplete="off">
                     <fieldset>
                         <legend><i class="fas fa-user"></i> &nbsp; Información básica</legend>
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col-12 col-md-6">
                                     <div class="form-group">
-                                        <label for="date_reservation" >Fecha de Reserva:</label>
-                                        <input type="date" class="form-control" id="date_reservation" name="date_reservation" value="<%= reservation.date_reservation %>">
+                                        <label for="date_reservation">Fecha de Reserva:</label>
+                                        <input type="date" class="form-control" id="date_reservation" name="date_reservation" data-original-value="<%= reservation.date_reservation %>" readonly>
                                     </div>
                                 </div>
-                                
                                 <div class="col-12 col-md-6">
                                     <div class="form-group">
-                                        <label for="tour" class="bmd-label-floating">Tour:</label>
-                                        <select id="tour_id" name="tour_id" class="form-control" required >
+                                        <label for="tour_id">Tour:</label>
+                                        <select id="tour_id" name="tour_id" class="form-control" required>
                                             <% tours.forEach((tour) => { %>
                                             <option value="<%= tour._id %>"
-                                                <%= tour._id.toString() === reservation.tour_id.toString() ? 'selected' : '' %>><%= tour.name %></option>
+                                                <%= tour._id.toString() === reservation.tour_id.toString()? 'selected' : '' %>><%= tour.name %></option>
                                             <% }); %>
                                         </select>
                                     </div>
                                 </div>
-
                                 <div class="col-12 col-md-6">
                                     <div class="form-group">
-                                        <label for="hotel" class="bmd-label-floating">Hotel:</label>
+                                        <label for="hotel_id">Hotel:</label>
                                         <select id="hotel_id" name="hotel_id" class="form-control" required>
                                             <% hotels.forEach((hotel) => { %>
                                             <option value="<%= hotel._id %>"
-                                                <%= hotel._id.toString() === reservation.hotel_id.toString() ? 'selected' : '' %>><%= hotel.name %></option>
+                                                <%= hotel._id.toString() === reservation.hotel_id.toString()? 'selected' : '' %>><%= hotel.name %></option>
                                             <% }); %>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-6">
                                     <div class="form-group">
-                                        <label for="customer" class="bmd-label-floating">Cliente:</label>
+                                        <label for="customer_id">Cliente:</label>
                                         <select id="customer_id" name="customer_id" class="form-control" required>
                                             <% customers.forEach((customer) => { %>
                                             <option value="<%= customer._id %>"
-                                                <%= customer._id.toString() === reservation.customer_id.toString() ? 'selected' : '' %>><%= customer.full_name %></option>
+                                                <%= customer._id.toString() === reservation.customer_id.toString()? 'selected' : '' %>><%= customer.full_name %></option>
                                             <% }); %>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-4">
                                     <div class="form-group">
-                                        <label for="date_start" >Fecha de Inicio:</label>
-                                        <input type="date" id="date_start" name="date_start" class="form-control" value="<%= reservation.date_start %>"
-                                            required><br>
+                                        <label for="date_start">Fecha de Inicio:</label>
+                                        <input type="date" id="date_start" name="date_start" class="form-control" readonly required>
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-4">
                                     <div class="form-group">
-                                        <label for="date_end" >Fecha de Fin:</label>
-                                        <input type="date" id="date_end" name="date_end" class="form-control" value="<%= reservation.date_end %>" required><br>
+                                        <label for="date_end">Fecha de Fin:</label>
+                                        <input type="date" id="date_end" name="date_end" class="form-control" readonly required>
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-4">
                                     <div class="form-group">
-                                        <label for="total_days" class="bmd-label-floating">Total de días:</label>
-                                        <input type="number" id="total_days" name="total_days" value="<%= reservation.total_days %>" class="form-control"
-                                            required><br>
+                                        <label for="total_days">Total de días:</label>
+                                        <input type="number" id="total_days" name="total_days" value="<%= reservation.total_days %>" class="form-control" required>
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-4">
                                     <div class="form-group">
-                                        <label for="price" class="bmd-label-floating">Precio:</label>
-                                        <input type="number" id="price" name="price" value="<%= reservation.price %>" class="form-control" required><br>
+                                        <label for="price">Precio:</label>
+                                        <input type="number" id="price" name="price" value="<%= reservation.price %>" class="form-control" required>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </fieldset>
                     <br>
-					<p class="text-center" style="margin-top: 40px;">
-						<button href="/reservations" type="submit" class="btn btn-raised btn-secondary btn-sm"><i class="bi bi-x-circle-fill"></i> &nbsp; CANCELAR</button>
-						&nbsp; &nbsp;
-						<button type="submit" href="/confirmacion" class="btn btn-raised btn-info btn-sm"><i class="bi bi-pencil-square"></i> &nbsp; ACTUALIZAR</button>
-					</p>
+                    <p class="text-center" style="margin-top: 40px;">
+                        <button type="submit" class="btn btn-raised btn-secondary btn-sm"><i class="bi bi-x-circle-fill"></i> &nbsp; CANCELAR</button>
+                        &nbsp; &nbsp;
+                        <button type="submit" class="btn btn-raised btn-info btn-sm"><i class="bi bi-pencil-square"></i> &nbsp; ACTUALIZAR</button>
+                    </p>
                 </form>
             </div>
         </section>
     </main>
-    
+
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            document.getElementById('reservationForm').addEventListener('submit', function (event) {
-                event.preventDefault();
-    
-                // Obtenemos los valores de los campos
-                var dateReservation = document.getElementById('date_reservation').value;
-                var tourId = document.getElementById('tour_id').value;
-                var hotelId = document.getElementById('hotel_id').value;
-                var customerId = document.getElementById('customer_id').value;
-                var dateStart = document.getElementById('date_start').value;
-                var dateEnd = document.getElementById('date_end').value;
-                var totalDays = document.getElementById('total_days').value;
-                var price = document.getElementById('price').value;
-    
-                // Comparamos los valores con los valores originales para detectar cambios
-                if (dateReservation === "<%= reservation.date_reservation %>" &&
-                    tourId === "<%= reservation.tour_id %>" &&
-                    hotelId === "<%= reservation.hotel_id %>" &&
-                    customerId === "<%= reservation.customer_id %>" &&
-                    dateStart === "<%= reservation.date_start %>" &&
-                    dateEnd === "<%= reservation.date_end %>" &&
-                    totalDays === "<%= reservation.total_days %>" &&
-                    price === "<%= reservation.price %>") {
-                    // Si no hay cambios, mostramos la alerta
-                    Swal.fire({
-                        icon: 'info',
-                        title: 'Sin cambios',
-                        text: 'No se ha realizado ningún cambio en la reserva.',
-                        confirmButtonText: 'Aceptar'
-                    });
-                } else {
-                    // Si hay cambios, el formulario se enviará normalmente
-                    this.submit();
-                }
-            });
+        document.addEventListener('DOMContentLoaded', function() {
+            var reservationDate = '<%= reservation.date_reservation %>';
+            var dateObject = new Date(reservationDate);
+            var formattedDate = dateObject.toISOString().split('T')[0]; 
+            document.getElementById('date_reservation').value = formattedDate;
         });
     </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var startDate = '<%= reservation.date_start %>';
+            var endDate = '<%= reservation.date_end %>';
+        
+            if (startDate) {
+                var startDateFormat = new Date(startDate).toISOString().split('T')[0];
+                document.getElementById('date_start').value = startDateFormat;
+            }
+        
+            if (endDate) {
+                var endDateFormat = new Date(endDate).toISOString().split('T')[0];
+                document.getElementById('date_end').value = endDateFormat;
+            }
+        });
+        </script>
     
-    <!-- Aquí van los scripts -->
+   
+    
     <!-- jQuery V3.4.1 -->
     <script src="/js/jquery-3.4.1.min.js"></script>
 
@@ -305,6 +290,8 @@
             }, 1000);
         });
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
+
 
     <!-- Bootstrap Material Design V4.0 initialization -->
     <script src="/js/main.js"></script>

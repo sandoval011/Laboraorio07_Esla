@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Editar reserva</title>
+
+    <!-- Normalize V8.0.1 -->
+    <link rel="stylesheet" href="/css/normalize.css">
+
+    <!-- Bootstrap V4.3 -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Bootstrap Material Design V4.0 -->
+    <link rel="stylesheet" href="/css/bootstrap-material-design.min.css">
+
+    <!-- Font Awesome V5.9.0 -->
+    <link rel="stylesheet" href="/css/all.css">
+
+    <!-- Sweet Alerts V8.13.0 CSS file -->
+    <link rel="stylesheet" href="/css/sweetalert2.min.css">
+
+    <!-- jQuery Custom Content Scroller V3.1.5 -->
+    <link rel="stylesheet" href="/css/jquery.mCustomScrollbar.css">
+
+    <!-- General Styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    
+</head>
+
+<body>
+    <!-- Main container -->
+    <main class="full-box main-container">
+        <!-- Nav lateral -->
+        <section class="full-box nav-lateral">
+			<div class="full-box nav-lateral-bg show-nav-lateral"></div>
+			<div class="full-box nav-lateral-content">
+				<figure class="full-box nav-lateral-avatar">
+					<i class="far fa-times-circle show-nav-lateral"></i>
+					<img src="/assets/avatar/esla.jpg" class="img-fluid" alt="Avatar">
+					<figcaption class="roboto-medium text-center">
+						ADMIN ESLA <br><small class="roboto-condensed-light">Web Developer</small>
+					</figcaption>
+				</figure>
+				<div class="full-box nav-lateral-bar"></div>
+				<nav class="full-box nav-lateral-menu">
+					<ul>
+						<li>
+							<a href="/"><i class="fab fa-dashcube fa-fw"></i> &nbsp; DASHBOARD</a>
+						</li>
+
+						<li>
+							<a href="#" class="nav-btn-submenu"><i class="fas fa-hotel"></i> &nbsp; Hoteles <i class="fas fa-chevron-down"></i></a>
+							<ul>
+								<li>
+									<a href="/formulario"><i class="fas fa-plus fa-fw"></i> &nbsp; Agregar Hotel</a>
+								</li>
+								<li>
+									<a href="/hoteles"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista de hoteles</a>
+								</li>
+							</ul>
+						</li>
+
+						<li>
+							<a href="#" class="nav-btn-submenu"><i class="fas fa-calendar-alt fa-fw"></i> &nbsp; Reservaciones <i class="fas fa-chevron-down"></i></a>
+							<ul>
+								<li>
+									<a href="/formularioReservation"><i class="fas fa-plus fa-fw"></i> &nbsp; Agregar Reservación</a>
+								</li>
+								<li>
+									<a href="/reservations"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Listar Reservación</a>
+								</li>
+
+							</ul>
+						</li>
+
+						<li>
+							<a href="#" class="nav-btn-submenu"><i class="fas fa-user-tie"></i> &nbsp; Empleados <i class="fas fa-chevron-down"></i></a>
+							<ul>
+								<li>
+									<a href="reservation-new.html"><i class="fas fa-plus fa-fw"></i> &nbsp; Nuevo empleado</a>
+								</li>
+								<li>
+									<a href="reservation-list.html"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista de empleados</a>
+								</li>
+
+							</ul>
+						</li>
+
+						<li>
+							<a href="#" class="nav-btn-submenu"><i class="fas fa-route"></i> &nbsp; Tours <i class="fas fa-chevron-down"></i></a>
+							<ul>
+								<li>
+									<a href="user-new.html"><i class="fas fa-plus fa-fw"></i> &nbsp; Nuevo Tours</a>
+								</li>
+								<li>
+									<a href="user-list.html"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista de Tours</a>
+								</li>
+
+							</ul>
+						</li>
+
+						<li>
+							<a href="company.html" class="nav-btn-submenu"><i class="fas fa-plane"></i> &nbsp; Fly <i class="fas fa-chevron-down"></i></a>
+							<ul>
+								<li>
+									<a href="user-new.html"><i class="fas fa-plus fa-fw"></i> &nbsp; Nuevo Fly</a>
+								</li>
+								<li>
+									<a href="user-list.html"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista de Fly</a>
+								</li>
+
+							</ul>
+						</li>
+						<li>
+							<a href="company.html" class="nav-btn-submenu"><i class="fas fa-ticket-alt"></i> &nbsp; Ticket <i class="fas fa-chevron-down"></i></a>
+							<ul>
+								<li>
+									<a href="user-new.html"><i class="fas fa-plus fa-fw"></i> &nbsp; Nuevo Ticket</a>
+								</li>
+								<li>
+									<a href="user-list.html"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista de Tickets</a>
+								</li>
+
+							</ul>
+						</li>
+					</ul>
+				</nav>
+			</div>
+		</section>
+        <section class="full-box page-content">
+            <nav class="full-box navbar-info">
+				<a href="#" class="float-left show-nav-lateral">
+					<i class="fas fa-exchange-alt"></i>
+				</a>
+			</nav>
+            <div class="full-box page-header">
+                <h3 class="text-left">
+                    <i class="fas fa-plus fa-fw"></i> &nbsp; EDITAR RESERVACION
+                </h3>
+            </div>
+            <div class="container-fluid">
+                <form  action="/reservations/<%= reservation._id %>/editar" method="POST" class="form-neon" autocomplete="off">
+                    <fieldset>
+                        <legend><i class="fas fa-user"></i> &nbsp; Información básica</legend>
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-12 col-md-6">
+                                    <div class="form-group">
+                                        <label for="date_reservation" >Fecha de Reserva:</label>
+                                        <input type="date" class="form-control" id="date_reservation" name="date_reservation" value="<%= reservation.date_reservation %>">
+                                    </div>
+                                </div>
+                                
+                                <div class="col-12 col-md-6">
+                                    <div class="form-group">
+                                        <label for="tour" class="bmd-label-floating">Tour:</label>
+                                        <select id="tour_id" name="tour_id" class="form-control" required >
+                                            <% tours.forEach((tour) => { %>
+                                            <option value="<%= tour._id %>"
+                                                <%= tour._id.toString() === reservation.tour_id.toString() ? 'selected' : '' %>><%= tour.name %></option>
+                                            <% }); %>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-md-6">
+                                    <div class="form-group">
+                                        <label for="hotel" class="bmd-label-floating">Hotel:</label>
+                                        <select id="hotel_id" name="hotel_id" class="form-control" required>
+                                            <% hotels.forEach((hotel) => { %>
+                                            <option value="<%= hotel._id %>"
+                                                <%= hotel._id.toString() === reservation.hotel_id.toString() ? 'selected' : '' %>><%= hotel.name %></option>
+                                            <% }); %>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <div class="form-group">
+                                        <label for="customer" class="bmd-label-floating">Cliente:</label>
+                                        <select id="customer_id" name="customer_id" class="form-control" required>
+                                            <% customers.forEach((customer) => { %>
+                                            <option value="<%= customer._id %>"
+                                                <%= customer._id.toString() === reservation.customer_id.toString() ? 'selected' : '' %>><%= customer.full_name %></option>
+                                            <% }); %>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-4">
+                                    <div class="form-group">
+                                        <label for="date_start" >Fecha de Inicio:</label>
+                                        <input type="date" id="date_start" name="date_start" class="form-control" value="<%= reservation.date_start %>"
+                                            required><br>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-4">
+                                    <div class="form-group">
+                                        <label for="date_end" >Fecha de Fin:</label>
+                                        <input type="date" id="date_end" name="date_end" class="form-control" value="<%= reservation.date_end %>" required><br>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-4">
+                                    <div class="form-group">
+                                        <label for="total_days" class="bmd-label-floating">Total de días:</label>
+                                        <input type="number" id="total_days" name="total_days" value="<%= reservation.total_days %>" class="form-control"
+                                            required><br>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-4">
+                                    <div class="form-group">
+                                        <label for="price" class="bmd-label-floating">Precio:</label>
+                                        <input type="number" id="price" name="price" value="<%= reservation.price %>" class="form-control" required><br>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <br>
+					<p class="text-center" style="margin-top: 40px;">
+						<button href="/reservations" type="submit" class="btn btn-raised btn-secondary btn-sm"><i class="bi bi-x-circle-fill"></i> &nbsp; CANCELAR</button>
+						&nbsp; &nbsp;
+						<button type="submit" href="/confirmacion" class="btn btn-raised btn-info btn-sm"><i class="bi bi-pencil-square"></i> &nbsp; ACTUALIZAR</button>
+					</p>
+                </form>
+            </div>
+        </section>
+    </main>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            document.getElementById('reservationForm').addEventListener('submit', function (event) {
+                event.preventDefault();
+    
+                // Obtenemos los valores de los campos
+                var dateReservation = document.getElementById('date_reservation').value;
+                var tourId = document.getElementById('tour_id').value;
+                var hotelId = document.getElementById('hotel_id').value;
+                var customerId = document.getElementById('customer_id').value;
+                var dateStart = document.getElementById('date_start').value;
+                var dateEnd = document.getElementById('date_end').value;
+                var totalDays = document.getElementById('total_days').value;
+                var price = document.getElementById('price').value;
+    
+                // Comparamos los valores con los valores originales para detectar cambios
+                if (dateReservation === "<%= reservation.date_reservation %>" &&
+                    tourId === "<%= reservation.tour_id %>" &&
+                    hotelId === "<%= reservation.hotel_id %>" &&
+                    customerId === "<%= reservation.customer_id %>" &&
+                    dateStart === "<%= reservation.date_start %>" &&
+                    dateEnd === "<%= reservation.date_end %>" &&
+                    totalDays === "<%= reservation.total_days %>" &&
+                    price === "<%= reservation.price %>") {
+                    // Si no hay cambios, mostramos la alerta
+                    Swal.fire({
+                        icon: 'info',
+                        title: 'Sin cambios',
+                        text: 'No se ha realizado ningún cambio en la reserva.',
+                        confirmButtonText: 'Aceptar'
+                    });
+                } else {
+                    // Si hay cambios, el formulario se enviará normalmente
+                    this.submit();
+                }
+            });
+        });
+    </script>
+    
+    <!-- Aquí van los scripts -->
+    <!-- jQuery V3.4.1 -->
+    <script src="/js/jquery-3.4.1.min.js"></script>
+
+    <!-- popper -->
+    <script src="/js/popper.min.js"></script>
+
+    <!-- Bootstrap V4.3 -->
+    <script src="/js/bootstrap.min.js"></script>
+
+    <!-- jQuery Custom Content Scroller V3.1.5 -->
+    <script src="/js/jquery.mCustomScrollbar.concat.min.js"></script>
+
+    <!-- Bootstrap Material Design V4.0 -->
+    <script src="/js/bootstrap-material-design.min.js"></script>
+    <script>
+        $(document).ready(function () { $('body').bootstrapMaterialDesign(); });
+    </script>
+
+    <script src="/js/sweetalert2.min.js"></script>
+
+    <script>
+        // Función para manejar el evento submit del formulario
+        document.getElementById('reservationForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+
+            setTimeout(function () {
+                // Muestra un mensaje de confirmación utilizando SweetAlert2
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Reserva guardada',
+                    text: 'La reserva se ha guardado correctamente.',
+                    confirmButtonText: 'Aceptar'
+                });
+            }, 1000);
+        });
+    </script>
+
+    <!-- Bootstrap Material Design V4.0 initialization -->
+    <script src="/js/main.js"></script>
+</body>
+
+</html>

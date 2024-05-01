@@ -41,95 +41,34 @@
 					<i class="far fa-times-circle show-nav-lateral"></i>
 					<img src="/assets/avatar/esla.jpg" class="img-fluid" alt="Avatar">
 					<figcaption class="roboto-medium text-center">
-						ADMIN ESLA <br><small class="roboto-condensed-light">Web Developer</small>
+						<%= user.name %> <br><small class="roboto-condensed-light"><%= user.role %></small>
 					</figcaption>
 				</figure>
 				<div class="full-box nav-lateral-bar"></div>
 				<nav class="full-box nav-lateral-menu">
 					<ul>
-						<li>
-							<a href="/"><i class="fab fa-dashcube fa-fw"></i> &nbsp; DASHBOARD</a>
-						</li>
-
-						<li>
-							<a href="#" class="nav-btn-submenu"><i class="fas fa-hotel"></i> &nbsp; Hoteles <i class="fas fa-chevron-down"></i></a>
-							<ul>
-								<li>
-									<a href="/formulario"><i class="fas fa-plus fa-fw"></i> &nbsp; Agregar Hotel</a>
-								</li>
-								<li>
-									<a href="/hoteles"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista de hoteles</a>
-								</li>
-							</ul>
-						</li>
-
-						<li>
-							<a href="#" class="nav-btn-submenu"><i class="fas fa-calendar-alt fa-fw"></i> &nbsp; Reservaciones <i class="fas fa-chevron-down"></i></a>
-							<ul>
-								<li>
-									<a href="/formularioReservation"><i class="fas fa-plus fa-fw"></i> &nbsp; Agregar Reservación</a>
-								</li>
-								<li>
-									<a href="/reservations"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Listar Reservación</a>
-								</li>
-
-							</ul>
-						</li>
-
-						<li>
-							<a href="#" class="nav-btn-submenu"><i class="fas fa-user-tie"></i> &nbsp; Empleados <i class="fas fa-chevron-down"></i></a>
-							<ul>
-								<li>
-									<a href="reservation-new.html"><i class="fas fa-plus fa-fw"></i> &nbsp; Nuevo empleado</a>
-								</li>
-								<li>
-									<a href="reservation-list.html"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista de empleados</a>
-								</li>
-
-							</ul>
-						</li>
-
-						<li>
-							<a href="#" class="nav-btn-submenu"><i class="fas fa-route"></i> &nbsp; Tours <i class="fas fa-chevron-down"></i></a>
-							<ul>
-								<li>
-									<a href="user-new.html"><i class="fas fa-plus fa-fw"></i> &nbsp; Nuevo Tours</a>
-								</li>
-								<li>
-									<a href="user-list.html"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista de Tours</a>
-								</li>
-
-							</ul>
-						</li>
-
-						<li>
-							<a href="company.html" class="nav-btn-submenu"><i class="fas fa-plane"></i> &nbsp; Fly <i class="fas fa-chevron-down"></i></a>
-							<ul>
-								<li>
-									<a href="user-new.html"><i class="fas fa-plus fa-fw"></i> &nbsp; Nuevo Fly</a>
-								</li>
-								<li>
-									<a href="user-list.html"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista de Fly</a>
-								</li>
-
-							</ul>
-						</li>
-						<li>
-							<a href="company.html" class="nav-btn-submenu"><i class="fas fa-ticket-alt"></i> &nbsp; Ticket <i class="fas fa-chevron-down"></i></a>
-							<ul>
-								<li>
-									<a href="user-new.html"><i class="fas fa-plus fa-fw"></i> &nbsp; Nuevo Ticket</a>
-								</li>
-								<li>
-									<a href="user-list.html"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista de Tickets</a>
-								</li>
-
-							</ul>
-						</li>
+						<% sidebarData.forEach(item => { %>
+							<li>
+								<% if (item.submenu) { %>
+									<a href="#" class="nav-btn-submenu">
+										<i class="<%= item.icon %>"></i> &nbsp; <%= item.title %> <i class="fas fa-chevron-down"></i>
+									</a>
+									<ul>
+										<% item.submenu.forEach(subitem => { %>
+											<li><a href="<%= subitem.link %>"><i class="fas fa-plus fa-fw"></i> &nbsp; <%= subitem.title %></a></li>
+										<% }); %>
+									</ul>
+								<% } else { %>
+									<a href="<%= item.link %>"><i class="<%= item.icon %>"></i> &nbsp; <%= item.title %></a>
+								<% } %>
+							</li>
+						<% }); %>
 					</ul>
 				</nav>
 			</div>
 		</section>
+
+
         <section class="full-box page-content">
             <nav class="full-box navbar-info">
 				<a href="#" class="float-left show-nav-lateral">
@@ -233,7 +172,6 @@
             document.getElementById('reservationForm').addEventListener('submit', function (event) {
                 event.preventDefault();
     
-                // Obtenemos los valores de los campos
                 var dateReservation = document.getElementById('date_reservation').value;
                 var tourId = document.getElementById('tour_id').value;
                 var hotelId = document.getElementById('hotel_id').value;
@@ -252,7 +190,6 @@
                     dateEnd === "<%= reservation.date_end %>" &&
                     totalDays === "<%= reservation.total_days %>" &&
                     price === "<%= reservation.price %>") {
-                    // Si no hay cambios, mostramos la alerta
                     Swal.fire({
                         icon: 'info',
                         title: 'Sin cambios',
@@ -260,7 +197,6 @@
                         confirmButtonText: 'Aceptar'
                     });
                 } else {
-                    // Si hay cambios, el formulario se enviará normalmente
                     this.submit();
                 }
             });
@@ -295,7 +231,6 @@
 
 
             setTimeout(function () {
-                // Muestra un mensaje de confirmación utilizando SweetAlert2
                 Swal.fire({
                     icon: 'success',
                     title: 'Reserva guardada',

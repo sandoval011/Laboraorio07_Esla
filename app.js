@@ -9,146 +9,299 @@ mongoose.connect('mongodb://0.0.0.0:27017/bd_hotel', {
     console.error('MongoDB connection error:', error);
 });
 
-  const express = require('express');
-  const app = express();
-  const bodyParser = require('body-parser');
-  const path = require('path'); 
-  
-
-  app.set('view engine', 'ejs');
-  
-
-  app.use(bodyParser.urlencoded({ extended: true }));
-  
-
-  app.use(express.static(__dirname + '/public'));
-  
-  app.use(express.urlencoded({ extended: true }));
+const express = require('express');
+const app = express();
+const bodyParser = require('body-parser');
+const path = require('path');
 
 
-  app.set('views', path.join(__dirname, 'views'));
-  
-
-  app.get('/', (req, res) => {
-      const user = {
-          name: 'ADMIN ESLA',
-          role: 'Web Developer'
-      };
+app.set('view engine', 'ejs');
 
 
-      const sidebarData = [
-        {
-            title: 'Dashboard',
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+
+
+app.use(express.static(__dirname + '/public'));
+
+app.use(express.urlencoded({
+    extended: true
+}));
+
+
+app.set('views', path.join(__dirname, 'views'));
+
+
+
+app.get('/', (req, res) => {
+    const user = {
+        name: 'ADMIN ESLA',
+        role: 'Web Developer'
+    };
+
+
+    const sidebarData = [{
+            title: 'Dashboardhuu',
             icon: 'fab fa-dashcube fa-fw',
-            link: 'home.html'
+            link: '/'
         },
         {
             title: 'Hoteles',
             icon: 'fas fa-hotel',
-            link: 'hoteles',
-            submenu: [
-                { title: 'Agregar Hotel', link: 'formulario' },
-                { title: 'Lista de Hoteles', link: 'hoteles' },
-                { title: 'Buscar Hotel', link: 'client-search.html' }
+            link: '#',
+            submenu: [{
+                    title: 'Agregar Hotel',
+                    link: 'formulario'
+                },
+                {
+                    title: 'Lista de Hoteles',
+                    link: 'hoteles'
+                }
             ]
         },
         {
             title: 'Reservaciones',
             icon: 'fas fa-calendar-alt fa-fw',
             link: '#',
-            submenu: [
-                { title: 'Agregar Reserva', link: 'item-new.html' },
-                { title: 'Lista de Reservaciones', link: 'item-list.html' },
-                { title: 'Buscar Reservaciones', link: 'item-search.html' }
+            submenu: [{
+                    title: 'Agregar Reserva',
+                    link: 'formularioReservation'
+                },
+                {
+                    title: 'Lista de Reservaciones',
+                    link: 'reservations'
+                }
             ]
         },
-        
+
         {
             title: 'Empleados',
             icon: 'fas fa-user-tie',
             link: '#',
-            submenu: [
-                { title: 'Nuevo Empleado', link: 'reservation-new.html' },
-                { title: 'Lista de Empleados', link: 'reservation-list.html' },
-                { title: 'Buscar Empleados', link: 'reservation-search.html' }
+            submenu: [{
+                    title: 'Nuevo Empleado',
+                    link: 'formularioCustomer'
+                },
+                {
+                    title: 'Lista de Empleados',
+                    link: 'customers'
+                }
             ]
         },
         {
             title: 'Tours',
             icon: 'fas fa-route',
             link: '#',
-            submenu: [
-                { title: 'Nuevo Tours', link: 'user-new.html' },
-                { title: 'Lista de Tours', link: 'user-list.html' },
-                { title: 'Buscar Tours', link: 'user-search.html' }
+            submenu: [{
+                    title: 'Nuevo Tours',
+                    link: 'formularioTour'
+                },
+                {
+                    title: 'Lista de Tours',
+                    link: 'tours'
+                }
             ]
         },
         {
             title: 'Fly',
             icon: 'fas fa-plane',
             link: '#',
-            submenu: [
-                { title: 'Nuevo Fly', link: 'user-new.html' },
-                { title: 'Lista de Fly', link: 'user-list.html' },
-                { title: 'Buscar Fly', link: 'user-search.html' }
+            submenu: [{
+                    title: 'Nuevo Fly',
+                    link: 'formularioFly'
+                },
+                {
+                    title: 'Lista de Fly',
+                    link: 'fly'
+                }
             ]
         },
         {
             title: 'Ticket',
             icon: 'fas fa-ticket-alt',
             link: '#',
-            submenu: [
-                { title: 'Nuevo Ticket', link: 'user-new.html' },
-                { title: 'Lista de Ticket', link: 'user-list.html' },
-                { title: 'Buscar Ticket', link: 'user-search.html' }
+            submenu: [{
+                    title: 'Nuevo Ticket',
+                    link: 'formularioTicket'
+                },
+                {
+                    title: 'Lista de Ticket',
+                    link: 'tickets'
+                }
             ]
         }
     ];
-  
-      const dashboardText = 'En este panel, encontrarás una amplia selección de hoteles para satisfacer tus necesidades de alojamiento en diferentes destinos. Ya sea que estés planeando unas vacaciones familiares, un viaje de negocios o una escapada romántica, tenemos el lugar perfecto para ti.';
-  
-      const tiles = [
-          {
-              title: 'Hoteles',
-              icon: 'fas fa-hotel',
-              count: 5,
-              link: 'hoteles'
-          },
-          {
-              title: 'Reservaciones',
-              icon: 'fas fa-calendar-alt',
-              count: 9,
-              link: 'item-list.html'
-            },
-            {
-                title: 'Empleados',
-                icon: 'fas fa-user-tie',
-                count: 10,
-                link: 'reservation-list.html'
-            },
-            {
-                title: 'Tours',
-                icon: 'fas fa-route',
-                count: 50,
-                link: 'user-list.html'
-            },
-            {
-                title: 'Fly',
-                icon: 'fas fa-plane',
-                count: 1,
-                link: 'company.html'
-            },
-            {
-                title: 'Ticket',
-                icon: 'fas fa-ticket-alt',
-                count: 1,
-                link: 'company.html'
-            }
-        ];
-      
+
+    const dashboardText = 'En este panel, encontrarás una amplia selección de hoteles para satisfacer tus necesidades de alojamiento en diferentes destinos. Ya sea que estés planeando unas vacaciones familiares, un viaje de negocios o una escapada romántica, tenemos el lugar perfecto para ti.';
+
+    const tiles = [
+        {
+            title: 'Hoteles',
+            icon: 'fas fa-hotel',
+            link: 'hoteles'
+        },
+        {
+            title: 'Reservaciones',
+            icon: 'fas fa-calendar-alt',
+            link: 'reservations'
+        },
+        {
+            title: 'Empleados',
+            icon: 'fas fa-user-tie',
+            link: 'customers'
+        },
+        {
+            title: 'Tours',
+            icon: 'fas fa-route',
+            link: 'tours'
+        },
+        {
+            title: 'Fly',
+            icon: 'fas fa-plane',
+            link: 'fly'
+        },
+        {
+            title: 'Ticket',
+            icon: 'fas fa-ticket-alt',
+            link: 'tickets'
+        }
+    ];
+    
+    // Realizar consultas a la base de datos para obtener el recuento de registros
+    Promise.all([
+        Hotel.countDocuments(),
+        Reservation.countDocuments(),
+        Customer.countDocuments(),
+        Tour.countDocuments(),
+        Fly.countDocuments(),
+        Ticket.countDocuments()
+    ])
+    .then((counts) => {
+        tiles.forEach((tile, index) => {
+            tile.count = counts[index];
+        });
+    
         res.render('home', { user, dashboardText, tiles, sidebarData });
-  });
-  
+    })
+    .catch((error) => {
+        console.error('Error al obtener el recuento de registros:', error);
+        tiles.forEach((tile) => {
+            tile.count = 0; 
+        });
+        res.render('home', { user, dashboardText, tiles, sidebarData });
+    });
+    
+});
+
+app.use((req, res, next) => {
+
+    const user = {
+        name: 'ADMIN ESLA',
+        role: 'Web Developer'
+    };
+
+
+    const sidebarData = [{
+            title: 'Dashboard',
+            icon: 'fab fa-dashcube fa-fw',
+            link: '/'
+        },
+        {
+            title: 'Hoteles',
+            icon: 'fas fa-hotel',
+            link: '#',
+            submenu: [{
+                    title: 'Agregar Hotel',
+                    link: 'formulario'
+                },
+                {
+                    title: 'Lista de Hoteles',
+                    link: 'hoteles'
+                }
+            ]
+        },
+        {
+            title: 'Reservaciones',
+            icon: 'fas fa-calendar-alt fa-fw',
+            link: '#',
+            submenu: [{
+                    title: 'Agregar Reserva',
+                    link: 'formularioReservation'
+                },
+                {
+                    title: 'Lista de Reservaciones',
+                    link: 'reservations'
+                }
+            ]
+        },
+
+        {
+            title: 'Empleados',
+            icon: 'fas fa-user-tie',
+            link: '#',
+            submenu: [{
+                    title: 'Nuevo Empleado',
+                    link: 'formularioCustomer'
+                },
+                {
+                    title: 'Lista de Empleados',
+                    link: 'customers'
+                }
+            ]
+        },
+        {
+            title: 'Tours',
+            icon: 'fas fa-route',
+            link: '#',
+            submenu: [{
+                    title: 'Nuevo Tours',
+                    link: 'formularioTour'
+                },
+                {
+                    title: 'Lista de Tours',
+                    link: 'tours'
+                }
+            ]
+        },
+        {
+            title: 'Fly',
+            icon: 'fas fa-plane',
+            link: '#',
+            submenu: [{
+                    title: 'Nuevo Fly',
+                    link: 'formularioFly'
+                },
+                {
+                    title: 'Lista de Fly',
+                    link: 'fly'
+                }
+            ]
+        },
+        {
+            title: 'Ticket',
+            icon: 'fas fa-ticket-alt',
+            link: '#',
+            submenu: [{
+                    title: 'Nuevo Ticket',
+                    link: 'formularioTicket'
+                },
+                {
+                    title: 'Lista de Ticket',
+                    link: 'tickets'
+                }
+            ]
+        }
+    ];
+
+    res.locals.user = user;
+    res.locals.sidebarData = sidebarData;
+    next();
+});
+
+
+
+
 //////////////////////////////////// FUNCIONALIDADES CRUD ///////////////////////////////////////////
 
 // Hotel
@@ -166,7 +319,12 @@ app.get('/formulario', (req, res) => {
 });
 
 app.post('/guardar-hotel', (req, res) => {
-    const { name, address, rating, price } = req.body;
+    const {
+        name,
+        address,
+        rating,
+        price
+    } = req.body;
     const hotel = new Hotel({
         name,
         address,
@@ -176,7 +334,7 @@ app.post('/guardar-hotel', (req, res) => {
     hotel.save()
         .then(() => {
             console.log('Nuevo hotel creado:', hotel);
-            res.redirect('/formulario');
+            res.redirect('/hoteles');
         })
         .catch((error) => {
             console.error('Error al crear hotel:', error);
@@ -187,7 +345,9 @@ app.post('/guardar-hotel', (req, res) => {
 app.get('/hoteles', (req, res) => {
     Hotel.find()
         .then((hoteles) => {
-            res.render('hoteles', { hoteles: hoteles });
+            res.render('hoteles', {
+                hoteles: hoteles
+            });
         })
         .catch((error) => {
             console.error('Error al obtener hoteles:', error);
@@ -202,7 +362,9 @@ app.get('/hoteles/:id/editar', (req, res) => {
             if (!hotel) {
                 return res.status(404).send('Hotel no encontrado');
             }
-            res.render('editar-hotel', { hotel: hotel });
+            res.render('editar-hotel', {
+                hotel: hotel
+            });
         })
         .catch((error) => {
             console.error('Error al obtener el hotel para editar:', error);
@@ -212,8 +374,20 @@ app.get('/hoteles/:id/editar', (req, res) => {
 
 app.post('/hoteles/:id/editar', (req, res) => {
     const hotelId = req.params.id;
-    const { name, address, rating, price } = req.body;
-    Hotel.findByIdAndUpdate(hotelId, { name, address, rating, price }, { new: true })
+    const {
+        name,
+        address,
+        rating,
+        price
+    } = req.body;
+    Hotel.findByIdAndUpdate(hotelId, {
+            name,
+            address,
+            rating,
+            price
+        }, {
+            new: true
+        })
         .then((hotel) => {
             if (!hotel) {
                 return res.status(404).send('Hotel no encontrado');
@@ -264,7 +438,17 @@ app.get('/formularioFly', (req, res) => {
 });
 
 app.post('/guardar-fly', (req, res) => {
-    const { name, origin_lat, origin_lng, destiny_lng, destiny_lat, price, origin_name, destiny_name, aereo_line } = req.body;
+    const {
+        name,
+        origin_lat,
+        origin_lng,
+        destiny_lng,
+        destiny_lat,
+        price,
+        origin_name,
+        destiny_name,
+        aereo_line
+    } = req.body;
     const fly = new Fly({
         name,
         origin_lat,
@@ -279,7 +463,7 @@ app.post('/guardar-fly', (req, res) => {
     fly.save()
         .then(() => {
             console.log('Nuevo vuelo creado:', fly);
-            res.redirect('/formularioFly');
+            res.redirect('/fly');
         })
         .catch((error) => {
             console.error('Error al crear vuelo:', error);
@@ -288,9 +472,12 @@ app.post('/guardar-fly', (req, res) => {
 });
 
 app.get('/fly', (req, res) => {
+    
     Fly.find()
         .then((flys) => {
-            res.render('fly', { flys: flys });
+            res.render('fly', {
+                flys: flys
+            });
         })
         .catch((error) => {
             console.error('Error al obtener flys:', error);
@@ -305,7 +492,9 @@ app.get('/fly/:id/editar', (req, res) => {
             if (!fly) {
                 return res.status(404).send('Fly no encontrado');
             }
-            res.render('editar_fly', { fly: fly });
+            res.render('editar_fly', {
+                fly: fly
+            });
         })
         .catch((error) => {
             console.error('Error al obtener el fly para editar:', error);
@@ -315,8 +504,30 @@ app.get('/fly/:id/editar', (req, res) => {
 
 app.post('/fly/:id/editar', (req, res) => {
     const flyId = req.params.id;
-    const { name, origin_lat, origin_lng, destiny_lng, destiny_lat, price, origin_name, destiny_name, aereo_line } = req.body;
-    Fly.findByIdAndUpdate(flyId, { name, origin_lat, origin_lng, destiny_lng, destiny_lat, price, origin_name, destiny_name, aereo_line }, { new: true })
+    const {
+        name,
+        origin_lat,
+        origin_lng,
+        destiny_lng,
+        destiny_lat,
+        price,
+        origin_name,
+        destiny_name,
+        aereo_line
+    } = req.body;
+    Fly.findByIdAndUpdate(flyId, {
+            name,
+            origin_lat,
+            origin_lng,
+            destiny_lng,
+            destiny_lat,
+            price,
+            origin_name,
+            destiny_name,
+            aereo_line
+        }, {
+            new: true
+        })
         .then((fly) => {
             if (!fly) {
                 return res.status(404).send('Fly no encontrado');
@@ -364,7 +575,14 @@ app.get('/formularioCustomer', (req, res) => {
 });
 
 app.post('/guardar-customer', (req, res) => {
-    const { full_name, credit_card, total_flights, total_lodgings, total_tours, phone_number } = req.body;
+    const {
+        full_name,
+        credit_card,
+        total_flights,
+        total_lodgings,
+        total_tours,
+        phone_number
+    } = req.body;
     const customer = new Customer({
         full_name,
         credit_card,
@@ -376,7 +594,7 @@ app.post('/guardar-customer', (req, res) => {
     customer.save()
         .then(() => {
             console.log('Nuevo cliente creado:', customer);
-            res.redirect('/formularioCustomer');
+            res.redirect('/customers');
         })
         .catch((error) => {
             console.error('Error al crear cliente:', error);
@@ -387,7 +605,9 @@ app.post('/guardar-customer', (req, res) => {
 app.get('/customers', (req, res) => {
     Customer.find()
         .then((customers) => {
-            res.render('customers', { customers: customers });
+            res.render('customers', {
+                customers: customers
+            });
         })
         .catch((error) => {
             console.error('Error al obtener clientes:', error);
@@ -402,7 +622,9 @@ app.get('/customers/:id/editar', (req, res) => {
             if (!customer) {
                 return res.status(404).send('Cliente no encontrado');
             }
-            res.render('editar_customer', { customer: customer });
+            res.render('editar_customer', {
+                customer: customer
+            });
         })
         .catch((error) => {
             console.error('Error al obtener el cliente para editar:', error);
@@ -412,8 +634,24 @@ app.get('/customers/:id/editar', (req, res) => {
 
 app.post('/customers/:id/editar', (req, res) => {
     const customerId = req.params.id;
-    const { full_name, credit_card, total_flights, total_lodgings, total_tours, phone_number } = req.body;
-    Customer.findByIdAndUpdate(customerId, { full_name, credit_card, total_flights, total_lodgings, total_tours, phone_number }, { new: true })
+    const {
+        full_name,
+        credit_card,
+        total_flights,
+        total_lodgings,
+        total_tours,
+        phone_number
+    } = req.body;
+    Customer.findByIdAndUpdate(customerId, {
+            full_name,
+            credit_card,
+            total_flights,
+            total_lodgings,
+            total_tours,
+            phone_number
+        }, {
+            new: true
+        })
         .then((customer) => {
             if (!customer) {
                 return res.status(404).send('Cliente no encontrado');
@@ -458,7 +696,9 @@ const Tour = mongoose.model('Tour', tourSchema);
 app.get('/formularioTour', (req, res) => {
     Customer.find()
         .then((customers) => {
-            res.render('formularioTour', { customers: customers });
+            res.render('formularioTour', {
+                customers: customers
+            });
         })
         .catch((error) => {
             console.error('Error al obtener clientes:', error);
@@ -467,15 +707,18 @@ app.get('/formularioTour', (req, res) => {
 });
 
 app.post('/guardar-tour', (req, res) => {
-    const { name, id_customer } = req.body; 
+    const {
+        name,
+        id_customer
+    } = req.body;
     const tour = new Tour({
-        name, 
+        name,
         id_customer
     });
     tour.save()
         .then(() => {
             console.log('Nuevo tour creado:', tour);
-            res.redirect('/formularioTour');
+            res.redirect('/tours');
         })
         .catch((error) => {
             console.error('Error al crear tour:', error);
@@ -486,7 +729,9 @@ app.post('/guardar-tour', (req, res) => {
 app.get('/tours', async (req, res) => {
     try {
         const tours = await Tour.find().populate('id_customer');
-        res.render('tours', { tours: tours });
+        res.render('tours', {
+            tours: tours
+        });
     } catch (error) {
         console.error('Error al obtener tours:', error);
         res.status(500).send('Error interno del servidor');
@@ -502,7 +747,10 @@ app.get('/tours/:id/editar', (req, res) => {
             }
             Customer.find()
                 .then((customers) => {
-                    res.render('editar_tour', { tour: tour, customers: customers });
+                    res.render('editar_tour', {
+                        tour: tour,
+                        customers: customers
+                    });
                 })
                 .catch((error) => {
                     console.error('Error al obtener clientes:', error);
@@ -517,8 +765,16 @@ app.get('/tours/:id/editar', (req, res) => {
 
 app.post('/tours/:id/editar', (req, res) => {
     const tourId = req.params.id;
-    const { name, id_customer } = req.body; // Se añade el campo "name"
-    Tour.findByIdAndUpdate(tourId, { name, id_customer }, { new: true }) // Se añade el campo "name"
+    const {
+        name,
+        id_customer
+    } = req.body; // Se añade el campo "name"
+    Tour.findByIdAndUpdate(tourId, {
+            name,
+            id_customer
+        }, {
+            new: true
+        }) // Se añade el campo "name"
         .then((tour) => {
             if (!tour) {
                 return res.status(404).send('Tour no encontrado');
@@ -576,7 +832,11 @@ app.get('/formularioTicket', async (req, res) => {
         const tours = await Tour.find();
         const flys = await Fly.find();
         const customers = await Customer.find();
-        res.render('formularioTicket', { tours: tours, flys: flys, customers: customers });
+        res.render('formularioTicket', {
+            tours: tours,
+            flys: flys,
+            customers: customers
+        });
     } catch (error) {
         console.error('Error al obtener información para el formulario de tickets:', error);
         res.status(500).send('Error interno del servidor');
@@ -585,7 +845,15 @@ app.get('/formularioTicket', async (req, res) => {
 
 app.post('/guardar-ticket', async (req, res) => {
     try {
-        const { price, tour_id, fly_id, customer_id, departure_date, arrival_date, date_purchase } = req.body;
+        const {
+            price,
+            tour_id,
+            fly_id,
+            customer_id,
+            departure_date,
+            arrival_date,
+            date_purchase
+        } = req.body;
         const ticket = new Ticket({
             price: price,
             tour_id: tour_id,
@@ -597,7 +865,7 @@ app.post('/guardar-ticket', async (req, res) => {
         });
         await ticket.save();
         console.log('Nuevo ticket creado:', ticket);
-        res.redirect('/formularioTicket');
+        res.redirect('/tickets');
     } catch (error) {
         console.error('Error al crear ticket:', error);
         res.status(500).send('Error interno del servidor');
@@ -607,7 +875,9 @@ app.post('/guardar-ticket', async (req, res) => {
 app.get('/tickets', async (req, res) => {
     try {
         const tickets = await Ticket.find().populate('tour_id fly_id customer_id');
-        res.render('tickets', { tickets: tickets });
+        res.render('tickets', {
+            tickets: tickets
+        });
     } catch (error) {
         console.error('Error al obtener tickets:', error);
         res.status(500).send('Error interno del servidor');
@@ -621,7 +891,12 @@ app.get('/tickets/:id/editar', async (req, res) => {
         const tours = await Tour.find();
         const flys = await Fly.find();
         const customers = await Customer.find();
-        res.render('editar_ticket', { ticket: ticket, tours: tours, flys: flys, customers: customers });
+        res.render('editar_ticket', {
+            ticket: ticket,
+            tours: tours,
+            flys: flys,
+            customers: customers
+        });
     } catch (error) {
         console.error('Error al obtener el ticket para editar:', error);
         res.status(500).send('Error interno del servidor');
@@ -631,7 +906,15 @@ app.get('/tickets/:id/editar', async (req, res) => {
 app.post('/tickets/:id/editar', async (req, res) => {
     try {
         const ticketId = req.params.id;
-        const { price, tour_id, fly_id, customer_id, departure_date, arrival_date, date_purchase } = req.body;
+        const {
+            price,
+            tour_id,
+            fly_id,
+            customer_id,
+            departure_date,
+            arrival_date,
+            date_purchase
+        } = req.body;
         await Ticket.findByIdAndUpdate(ticketId, {
             price: price,
             tour_id: tour_id,
@@ -665,121 +948,149 @@ app.post('/tickets/:id/eliminar', async (req, res) => {
 
 const reservationSchema = new mongoose.Schema({
     date_reservation: Date,
-     tour_id: {
-         type: mongoose.Schema.Types.ObjectId,
-         ref: 'Tour'
-     },
-     hotel_id: {
-         type: mongoose.Schema.Types.ObjectId,
-         ref: 'Hotel'
-     },
-     customer_id: {
-         type: mongoose.Schema.Types.ObjectId,
-         ref: 'Customer'
-     },
-     date_start: Date, 
-     date_end: Date,
-     total_days: Number, 
-     price: Number
- });
- 
-const Reservation = mongoose.model('Reservation', reservationSchema);
- 
- app.get('/formularioReservation', async (req, res) => {
-     try {
-         const tours = await Tour.find();
-         const hotels = await Hotel.find();
-         const customers = await Customer.find();
-         res.render('formularioReservation', { tours: tours, hotels: hotels, customers: customers });
-     } catch (error) {
-         console.error('Error al obtener información para el formulario de reservas:', error);
-         res.status(500).send('Error interno del servidor');
-     }
- });
- 
- app.post('/guardar-reservation', async (req, res) => {
-     try {
-         const { date_reservation, tour_id, hotel_id, customer_id, date_start, date_end, total_days, price } = req.body;
-         const reservation = new Reservation({
-             date_reservation: date_reservation,
-             tour_id: tour_id,
-             hotel_id: hotel_id,
-             customer_id: customer_id,
-             date_start: date_start,
-             date_end: date_end,
-             total_days: total_days,
-             price: price
-         });
-         await reservation.save();
-         console.log('Nueva reserva creada:', reservation);
-         res.redirect('/formularioReservation');
-     } catch (error) {
-         console.error('Error al crear reserva:', error);
-         res.status(500).send('Error interno del servidor');
-     }
- });
- 
- app.get('/reservations', async (req, res) => {
-     try {
-         const reservations = await Reservation.find().populate('tour_id hotel_id customer_id');
-         res.render('reservations', { reservations: reservations });
-     } catch (error) {
-         console.error('Error al obtener reservas:', error);
-         res.status(500).send('Error interno del servidor');
-     }
- });
- 
- app.get('/reservations/:id/editar', async (req, res) => {
-     try {
-         const reservationId = req.params.id;
-         const reservation = await Reservation.findById(reservationId);
-         const tours = await Tour.find();
-         const hotels = await Hotel.find();
-         const customers = await Customer.find();
-         res.render('editar_reservation', { reservation: reservation, tours: tours, hotels: hotels, customers: customers });
-     } catch (error) {
-         console.error('Error al obtener la reserva para editar:', error);
-         res.status(500).send('Error interno del servidor');
-     }
- });
- 
- app.post('/reservations/:id/editar', async (req, res) => {
-     try {
-         const reservationId = req.params.id;
-         const { date_reservation, tour_id, hotel_id, customer_id, date_start, date_end, total_days, price } = req.body;
-         await Reservation.findByIdAndUpdate(reservationId, {
-             date_reservation: date_reservation,
-             tour_id: tour_id,
-             hotel_id: hotel_id,
-             customer_id: customer_id,
-             date_start: date_start,
-             date_end: date_end,
-             total_days: total_days,
-             price: price
-         });
-         console.log('Reserva actualizada');
-         res.redirect('/reservations');
-     } catch (error) {
-         console.error('Error al actualizar la reserva:', error);
-         res.status(500).send('Error interno del servidor');
-     }
- });
- 
- app.post('/reservations/:id/eliminar', async (req, res) => {
-     try {
-         const reservationId = req.params.id;
-         await Reservation.findByIdAndDelete(reservationId);
-         console.log('Reserva eliminada');
-         res.redirect('/reservations');
-     } catch (error) {
-         console.error('Error al eliminar la reserva:', error);
-         res.status(500).send('Error interno del servidor');
-     }
- });
+    tour_id: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Tour'
+    },
+    hotel_id: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Hotel'
+    },
+    customer_id: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Customer'
+    },
+    date_start: Date,
+    date_end: Date,
+    total_days: Number,
+    price: Number
+});
 
-  // Puerto en el que el servidor escucha las solicitudes
-  const PORT = 3000;
-  app.listen(PORT, () => {
-      console.log(`Servidor corriendo en http://localhost:${PORT}`);
-  });
-  
+const Reservation = mongoose.model('Reservation', reservationSchema);
+
+app.get('/formularioReservation', async (req, res) => {
+    try {
+        const tours = await Tour.find();
+        const hotels = await Hotel.find();
+        const customers = await Customer.find();
+        res.render('formularioReservation', {
+            tours: tours,
+            hotels: hotels,
+            customers: customers
+        });
+    } catch (error) {
+        console.error('Error al obtener información para el formulario de reservas:', error);
+        res.status(500).send('Error interno del servidor');
+    }
+});
+
+app.post('/guardar-reservation', async (req, res) => {
+    try {
+        const {
+            date_reservation,
+            tour_id,
+            hotel_id,
+            customer_id,
+            date_start,
+            date_end,
+            total_days,
+            price
+        } = req.body;
+        const reservation = new Reservation({
+            date_reservation: date_reservation,
+            tour_id: tour_id,
+            hotel_id: hotel_id,
+            customer_id: customer_id,
+            date_start: date_start,
+            date_end: date_end,
+            total_days: total_days,
+            price: price
+        });
+        await reservation.save();
+        console.log('Nueva reserva creada:', reservation);
+        res.redirect('/reservations');
+    } catch (error) {
+        console.error('Error al crear reserva:', error);
+        res.status(500).send('Error interno del servidor');
+    }
+});
+
+app.get('/reservations', async (req, res) => {
+    try {
+        const reservations = await Reservation.find().populate('tour_id hotel_id customer_id');
+        res.render('reservations', {
+            reservations: reservations
+        });
+    } catch (error) {
+        console.error('Error al obtener reservas:', error);
+        res.status(500).send('Error interno del servidor');
+    }
+});
+
+app.get('/reservations/:id/editar', async (req, res) => {
+    try {
+        const reservationId = req.params.id;
+        const reservation = await Reservation.findById(reservationId);
+        const tours = await Tour.find();
+        const hotels = await Hotel.find();
+        const customers = await Customer.find();
+        res.render('editar_reservation', {
+            reservation: reservation,
+            tours: tours,
+            hotels: hotels,
+            customers: customers
+        });
+    } catch (error) {
+        console.error('Error al obtener la reserva para editar:', error);
+        res.status(500).send('Error interno del servidor');
+    }
+});
+
+app.post('/reservations/:id/editar', async (req, res) => {
+    try {
+        const reservationId = req.params.id;
+        const {
+            date_reservation,
+            tour_id,
+            hotel_id,
+            customer_id,
+            date_start,
+            date_end,
+            total_days,
+            price
+        } = req.body;
+        await Reservation.findByIdAndUpdate(reservationId, {
+            date_reservation: date_reservation,
+            tour_id: tour_id,
+            hotel_id: hotel_id,
+            customer_id: customer_id,
+            date_start: date_start,
+            date_end: date_end,
+            total_days: total_days,
+            price: price
+        });
+        console.log('Reserva actualizada');
+        res.redirect('/reservations');
+    } catch (error) {
+        console.error('Error al actualizar la reserva:', error);
+        res.status(500).send('Error interno del servidor');
+    }
+});
+
+app.post('/reservations/:id/eliminar', async (req, res) => {
+    try {
+        const reservationId = req.params.id;
+        await Reservation.findByIdAndDelete(reservationId);
+        console.log('Reserva eliminada');
+        res.redirect('/reservations');
+    } catch (error) {
+        console.error('Error al eliminar la reserva:', error);
+        res.status(500).send('Error interno del servidor');
+    }
+});
+
+// Puerto en el que el servidor escucha las solicitudes
+const PORT = 3000;
+app.listen(PORT, () => {
+    console.log(`Servidor corriendo en http://localhost:${PORT}`);
+});

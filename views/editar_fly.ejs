@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-	<title>Nuevo cliente</title>
+	<title>Editar vuelo</title>
 
 	<!-- Normalize V8.0.1 -->
 	<link rel="stylesheet" href="/css/normalize.css">
@@ -36,8 +36,7 @@
 	
 	<!-- Main container -->
 	<main class="full-box main-container">
-
-
+		<!-- Nav lateral -->
 		<section class="full-box nav-lateral">
 			<div class="full-box nav-lateral-bg show-nav-lateral"></div>
 			<div class="full-box nav-lateral-content">
@@ -78,93 +77,136 @@
 				<a href="#" class="float-left show-nav-lateral">
 					<i class="fas fa-exchange-alt"></i>
 				</a>
+				
 			</nav>
 
 			<!-- Page header -->
 			<div class="full-box page-header">
 				<h3 class="text-left">
-					<i class="fas fa-plus fa-fw"></i> &nbsp; EDITAR HOTEL
+					<i class="fas fa-plus fa-fw"></i> &nbsp; Editar Vuelo
 				</h3>
 			</div>
 			<!-- Content here-->
-
 			<div class="container-fluid">
-				<form action="/hoteles/<%= hotel._id %>/editar" method="POST" class="form-neon" autocomplete="off" onsubmit="return validateForm()">
+				<form action="/fly/<%= fly._id %>/editar" method="POST" class="form-neon" autocomplete="off" onsubmit="return validateForm()">
 					<fieldset>
 						<legend><i class="fas fa-user"></i> &nbsp; Información básica</legend>
 						<div class="container-fluid">
 							<div class="row">
 								<div class="col-12 col-md-6">
 									<div class="form-group">
-										<label for="cliente_dni" class="bmd-label-floating">Nombre del hotel</label>
-										<input type="text" pattern="[a-zA-Z0-9-]{1,27}" class="form-control" id="name" name="name" value="<%= hotel.name %>" required maxlength="27">
+										<label for="cliente_dni" class="bmd-label-floating">Nombre:</label>
+										<input type="text" class="form-control" id="name" name="name" value="<%= fly.name %>" required maxlength="27">
 									</div>
 								</div>
 								<div class="col-12 col-md-6">
 									<div class="form-group">
-										<label for="cliente_nombre" class="bmd-label-floating">Dirección</label>
-										<input type="text" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{1,40}" class="form-control" value="<%= hotel.address %>" name="address" id="address" required  maxlength="40">
+										<label for="cliente_nombre" class="bmd-label-floating">Latitud de Origen:</label>
+										<input type="text"  class="form-control" value="<%= fly.origin_lat %>" name="origin_lat" id="origin_lat" required  maxlength="40">
 									</div>
 								</div>
 								<div class="col-12 col-md-4">
 									<div class="form-group">
-										<label for="cliente_apellido" class="bmd-label-floating">Valoración</label>
-										<input type="number" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{1,40}" class="form-control" value="<%= hotel.rating %>" name="rating" id="rating" required maxlength="40">
+										<label for="cliente_apellido" class="bmd-label-floating">Longitud de Origen:</label>
+										<input type="text" class="form-control" value="<%= fly.origin_lng%>" name="origin_lng" id="origin_lng" required maxlength="40">
 									</div>
 								</div>
 								<div class="col-12 col-md-4">
 									<div class="form-group">
-										<label for="cliente_telefono" class="bmd-label-floating">Precio</label>
-										<input type="number" pattern="[0-9()+]{1,20}" class="form-control" value="<%= hotel.price %>" name="price" id="price" required maxlength="20">
+										<label for="cliente_telefono" class="bmd-label-floating">Longitud de Destino:</label>
+										<input type="text"  class="form-control" value="<%= fly.destiny_lng %>" name="destiny_lng" id="destiny_lng" required maxlength="20">
+									</div>
+								</div>
+								<div class="col-12 col-md-4">
+									<div class="form-group">
+										<label for="cliente_telefono" class="bmd-label-floating">Latitud de Destino:</label>
+										<input type="text" class="form-control" value="<%= fly.destiny_lat %>" name="destiny_lat" id="destiny_lat" required maxlength="20">
+									</div>
+								</div>
+								<div class="col-12 col-md-4">
+									<div class="form-group">
+										<label for="cliente_telefono" class="bmd-label-floating">Precio:</label>
+										<input type="text" class="form-control" value="<%= fly.price %>" name="price" id="price" required maxlength="20">
+									</div>
+								</div>
+								<div class="col-12 col-md-4">
+									<div class="form-group">
+										<label for="cliente_telefono" class="bmd-label-floating">Nombre del Origen:</label>
+										<input type="text" class="form-control" value="<%= fly.origin_name %>" name="origin_name" id="origin_name" required maxlength="20">
+									</div>
+								</div>
+								<div class="col-12 col-md-4">
+									<div class="form-group">
+										<label for="cliente_telefono" class="bmd-label-floating">Nombre del Destino:</label>
+										<input type="text"  class="form-control" value="<%= fly.destiny_name %>" name="destiny_name" id="destiny_name" required maxlength="20">
+									</div>
+								</div>
+								<div class="col-12 col-md-4">
+									<div class="form-group">
+										<label for="cliente_telefono" class="bmd-label-floating">Línea Aérea:</label>
+										<input type="text"  class="form-control" value="<%= fly.aereo_line %>" name="aereo_line" id="aereo_line" required maxlength="20">
 									</div>
 								</div>
 							</div>
 						</div>
 					</fieldset>
 					<br><br><br>
-
 					<p class="text-center" style="margin-top: 40px;">
-						<button type="button" class="btn btn-raised btn-secondary btn-sm" onclick="window.location.href='/hoteles'"><i class="bi bi-x-circle-fill"></i> &nbsp; CANCELAR</button>
+						<button type="button" class="btn btn-raised btn-secondary btn-sm" onclick="window.location.href='/fly'"><i class="bi bi-x-circle-fill"></i> &nbsp; CANCELAR</button>
 						&nbsp; &nbsp;
-						<button type="submit" class="btn btn-raised btn-info btn-sm" onclick="return validateForm()"><i class="bi bi-pencil-square"></i> &nbsp; ACTUALIZAR</button>
+
+						<button type="submit" class="btn btn-raised btn-info btn-sm">
+						<i class="bi bi-pencil-square"></i> &nbsp; ACTUALIZAR
+					   </button>
+
+
 					</p>
 				</form>
 			</div>	
 		</section>
 	</main>
+
+
 	<script>
 		var originalValues = {
-			name: '<%= hotel.name %>',
-			address: '<%= hotel.address %>',
-			rating: '<%= hotel.rating %>',
-			price: '<%= hotel.price %>'
+			name: '<%= fly.name %>',
+			origin_lat: '<%= fly.origin_lat %>',
+			origin_lng: '<%= fly.origin_lng %>',
+			destiny_lng: '<%= fly.destiny_lng %>',
+			price: '<%= fly.price %>',
+			origin_name: '<%= fly.origin_name %>',
+			destiny_name: '<%= fly.destiny_name %>',
+			aereo_line: '<%= fly.aereo_line %>'
 		};
 	
 		function validateForm() {
-			var formChanged = false;
+			var currentValues = {
+				name: document.getElementById('name').value,
+				origin_lat: document.getElementById('origin_lat').value,
+				origin_lng: document.getElementById('origin_lng').value,
+				destiny_lng: document.getElementById('destiny_lng').value,
+				price: document.getElementById('price').value,
+				origin_name: document.getElementById('origin_name').value,
+				destiny_name: document.getElementById('destiny_name').value,
+				aereo_line: document.getElementById('aereo_line').value
+			};
 	
-			if (document.getElementById('name').value !== originalValues.name) {
-				formChanged = true;
-			}
-			if (document.getElementById('address').value !== originalValues.address) {
-				formChanged = true;
-			}
-			if (document.getElementById('rating').value !== originalValues.rating) {
-				formChanged = true;
-			}
-			if (document.getElementById('price').value !== originalValues.price) {
-				formChanged = true;
-			}
-
+			var formChanged = Object.keys(originalValues).some(function(key) {
+				return originalValues[key] !== currentValues[key];
+			});
+	
 			if (formChanged) {
 				alert("¡El formulario se ha actualizado correctamente!");
-				return true; 
 			} else {
 				alert("No se ha modificado ningún campo. No se puede actualizar.");
-				return false;
 			}
+	
+			return true;
 		}
-	</script> 
+	</script>
+
+
+	
 	
 	<!--=============================================
 	=            Include JavaScript files           =
@@ -184,8 +226,8 @@
 	<!-- Bootstrap Material Design V4.0 -->
 	<script src="./js/bootstrap-material-design.min.js" ></script>
 	<script>$(document).ready(function() { $('body').bootstrapMaterialDesign(); });</script>
-	
 	<script src="./js/main.js" ></script>
+
 
 </body>
 </html>

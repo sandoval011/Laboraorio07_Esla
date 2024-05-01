@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-	<title>Nuevo Cliente</title>
+	<title>Agregar Vuelo</title>
 
 	<!-- Normalize V8.0.1 -->
 	<link rel="stylesheet" href="/css/normalize.css">
@@ -35,7 +35,6 @@
 	
 	<!-- Main container -->
 	<main class="full-box main-container">
-		<!-- Nav lateral -->
 		<!-- Nav lateral -->
 		<section class="full-box nav-lateral">
 			<div class="full-box nav-lateral-bg show-nav-lateral"></div>
@@ -70,8 +69,6 @@
 				</nav>
 			</div>
 		</section>
-
-
 		<!-- Page content -->
 		<section class="full-box page-content">
 			<nav class="full-box navbar-info">
@@ -80,65 +77,72 @@
 				</a>
 				
 			</nav>
+
 			<!-- Page header -->
 			<div class="full-box page-header">
 				<h3 class="text-left">
-					<i class="fas fa-plus fa-fw"></i> &nbsp; AGREGAR CLIENTE
+					<i class="fas fa-plus fa-fw"></i> &nbsp; AGREGAR VUELO
 				</h3>
 			</div>
-
-			<div class="container-fluid">
-				<ul class="full-box list-unstyled page-nav-tabs">
-					<li>
-						<a class="active" href="formularioCustomer"><i class="fas fa-plus fa-fw"></i> &nbsp; AGREGAR CLIENTE</a>
-					</li>
-					<li>
-						<a href="customers"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; LISTA DE CLIENTES</a>
-					</li>
-				</ul>	
-			</div>
-			
 			<!-- Content here-->
 			<div class="container-fluid">
-				<form action="/guardar-customer" class="form-neon" autocomplete="off" method="post" onsubmit="return validarCampos()" >
+				<form action="/guardar-fly" method="POST" class="form-neon" autocomplete="off" onsubmit="return validarCampos()">
 					<fieldset>
 						<legend><i class="fas fa-user"></i> &nbsp; Información básica</legend>
 						<div class="container-fluid">
 							<div class="row">
 								<div class="col-12 col-md-6">
 									<div class="form-group">
-										<label for="full_name" class="bmd-label-floating">Nombre Completo:</label>
-										<input type="text" class="form-control" id="full_name" name="full_name" maxlength="27" required>
+										<label for="cliente_dni" class="bmd-label-floating">Nombre:</label>
+										<input type="text"  class="form-control" id="name" name="name" required maxlength="27">
 									</div>
 								</div>
 								<div class="col-12 col-md-6">
 									<div class="form-group">
-										<label for="credit_card" class="bmd-label-floating">Tarjeta de Crédito:</label>
-										<input type="text" class="form-control" id="credit_card" name="credit_card" maxlength="10" required>
+										<label for="cliente_nombre" class="bmd-label-floating">Latitud de Origen:</label>
+										<input type="text"  class="form-control"  name="origin_lat" id="origin_lat" required  maxlength="40">
 									</div>
 								</div>
 								<div class="col-12 col-md-4">
 									<div class="form-group">
-										<label for="total_flights" class="bmd-label-floating">Total de Vuelos:</label>
-										<input type="number" class="form-control" id="total_flights" name="total_flights" required>
+										<label for="cliente_apellido" class="bmd-label-floating">Longitud de Origen:</label>
+										<input type="text"  class="form-control" name="origin_lng" id="origin_lng" required maxlength="40">
 									</div>
 								</div>
 								<div class="col-12 col-md-4">
 									<div class="form-group">
-										<label for="total_lodgings" class="bmd-label-floating">Total Alojamientos:</label>
-										<input type="number" class="form-control"  id="total_lodgings" name="total_lodgings" required>
+										<label for="cliente_telefono" class="bmd-label-floating">Longitud de Destino:</label>
+										<input type="text" class="form-control" name="destiny_lng" id="destiny_lng" required maxlength="20">
 									</div>
 								</div>
 								<div class="col-12 col-md-4">
 									<div class="form-group">
-										<label for="total_tours" class="bmd-label-floating">Total de Tours:</label>
-										<input type="number" class="form-control" id="total_tours" name="total_tours" required>
+										<label for="cliente_telefono" class="bmd-label-floating">Latitud de Destino:</label>
+										<input type="text" class="form-control"  name="destiny_lat" id="destiny_lat" required maxlength="20">
 									</div>
 								</div>
 								<div class="col-12 col-md-4">
 									<div class="form-group">
-										<label for="phone_number" class="bmd-label-floating">Teléfono</label>
-										<input type="number" class="form-control" id="phone_number" name="phone_number" required >
+										<label for="cliente_telefono" class="bmd-label-floating">Precio:</label>
+										<input type="number"  class="form-control"  name="price" id="price" required maxlength="20">
+									</div>
+								</div>
+								<div class="col-12 col-md-4">
+									<div class="form-group">
+										<label for="cliente_telefono" class="bmd-label-floating">Nombre del Origen:</label>
+										<input type="text" class="form-control" name="origin_name" id="origin_name" required maxlength="20">
+									</div>
+								</div>
+								<div class="col-12 col-md-4">
+									<div class="form-group">
+										<label for="cliente_telefono" class="bmd-label-floating">Nombre del Destino:</label>
+										<input type="text" class="form-control" name="destiny_name" id="destiny_name" required maxlength="20">
+									</div>
+								</div>
+								<div class="col-12 col-md-4">
+									<div class="form-group">
+										<label for="cliente_telefono" class="bmd-label-floating">Línea Aérea:</label>
+										<input type="text" class="form-control"  name="aereo_line" id="aereo_line" required maxlength="20">
 									</div>
 								</div>
 							</div>
@@ -155,52 +159,58 @@
 
 		</section>
 	</main>
+	
+
 	<script>
 		function validarCampos() {
-    // Obtener los valores de los campos
-    var full_name = document.getElementById('full_name').value;
-    var credit_card = document.getElementById('credit_card').value;
-    var total_flights = document.getElementById('total_flights').value;
-    var total_lodgings = document.getElementById('total_lodgings').value;
-	var total_tours = document.getElementById('total_tours').value;
-    var phone_number = document.getElementById('phone_number').value;
+    var name = document.getElementById('name').value;
+    var origin_lat = document.getElementById('origin_lat').value;
+    var origin_lng = document.getElementById('origin_lng').value;
+    var destiny_lng = document.getElementById('destiny_lng').value;
+	var price = document.getElementById('price').value;
+	var origin_name = document.getElementById('origin_name').value;
+	var destiny_name = document.getElementById('destiny_name').value;
+	var aereo_line = document.getElementById('aereo_line').value;
+	
 
     // Validar que todos los campos estén completos
-    if (full_name === '' || credit_card === '' || total_flights === '' || total_lodgings === '' || total_tours === '' || phone_number === '' ) {
-        // Mostrar mensaje de error si algún campo está vacío
+    if (name === '' || origin_lat === '' || origin_lng === '' || destiny_lng  === '' || price === '' || origin_name  === '' || destiny_name === '' || aereo_line  === '') {
+
         alert('Por favor, complete todos los campos antes de guardar.');
         return false; 
     }
 
     alert('Los datos se han guardado correctamente.');
 
-    window.location.href = '/customers';
+    window.location.href = '/fly';
 
     return true; 
-}
+     }
 
     </script>
+	
+	
 	
 	
 	<!--=============================================
 	=            Include JavaScript files           =
 	==============================================-->
 	<!-- jQuery V3.4.1 -->
-	<script src="/js/jquery-3.4.1.min.js" ></script>
+	<script src="./js/jquery-3.4.1.min.js" ></script>
 
 	<!-- popper -->
-	<script src="/js/popper.min.js" ></script>
+	<script src="./js/popper.min.js" ></script>
 
 	<!-- Bootstrap V4.3 -->
-	<script src="/js/bootstrap.min.js" ></script>
+	<script src="./js/bootstrap.min.js" ></script>
 
 	<!-- jQuery Custom Content Scroller V3.1.5 -->
-	<script src="/js/jquery.mCustomScrollbar.concat.min.js" ></script>
+	<script src="./js/jquery.mCustomScrollbar.concat.min.js" ></script>
 
 	<!-- Bootstrap Material Design V4.0 -->
-	<script src="/js/bootstrap-material-design.min.js" ></script>
+	<script src="./js/bootstrap-material-design.min.js" ></script>
 	<script>$(document).ready(function() { $('body').bootstrapMaterialDesign(); });</script>
 
-	<script src="/js/main.js" ></script>
+	<script src="./js/main.js" ></script>
 </body>
 </html>

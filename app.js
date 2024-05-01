@@ -45,10 +45,10 @@ mongoose.connect('mongodb://0.0.0.0:27017/bd_hotel', {
         {
             title: 'Hoteles',
             icon: 'fas fa-hotel',
-            link: '#',
+            link: 'hoteles',
             submenu: [
-                { title: 'Agregar Hotel', link: 'client-new.html' },
-                { title: 'Lista de Hoteles', link: 'client-list.html' },
+                { title: 'Agregar Hotel', link: 'formulario' },
+                { title: 'Lista de Hoteles', link: 'hoteles' },
                 { title: 'Buscar Hotel', link: 'client-search.html' }
             ]
         },
@@ -112,7 +112,7 @@ mongoose.connect('mongodb://0.0.0.0:27017/bd_hotel', {
               title: 'Hoteles',
               icon: 'fas fa-hotel',
               count: 5,
-              link: 'client-new.html'
+              link: 'hoteles'
           },
           {
               title: 'Reservaciones',

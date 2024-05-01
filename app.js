@@ -749,7 +749,8 @@ app.get('/tours/:id/editar', (req, res) => {
                 .then((customers) => {
                     res.render('editar_tour', {
                         tour: tour,
-                        customers: customers
+                        customers: customers,
+                        customer: {}
                     });
                 })
                 .catch((error) => {

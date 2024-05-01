@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-	<title>Lista de Vuelos</title>
+	<title>Nuevo Ticket</title>
 
 	<!-- Normalize V8.0.1 -->
 	<link rel="stylesheet" href="/css/normalize.css">
@@ -32,6 +32,7 @@
 
 </head>
 <body>
+	
 	<!-- Main container -->
 	<main class="full-box main-container">
 		<!-- Nav lateral -->
@@ -69,109 +70,113 @@
 			</div>
 		</section>
 
+
 		<!-- Page content -->
 		<section class="full-box page-content">
+
 			<nav class="full-box navbar-info">
 				<a href="#" class="float-left show-nav-lateral">
 					<i class="fas fa-exchange-alt"></i>
 				</a>
-				
 			</nav>
-
 			<!-- Page header -->
 			<div class="full-box page-header">
 				<h3 class="text-left">
-					<i class="fas fa-clipboard-list fa-fw"></i> &nbsp; LISTA DE VUELOS
+					<i class="fas fa-plus fa-fw"></i> &nbsp; AGREGAR TOUR
 				</h3>
 			</div>
 
 			<div class="container-fluid">
 				<ul class="full-box list-unstyled page-nav-tabs">
 					<li>
-						<a href="/formularioFly"><i class="fas fa-plus fa-fw"></i> &nbsp; AGREGAR FLY</a>
+						<a class="active" href="formularioTour"><i class="fas fa-plus fa-fw"></i> &nbsp; AGREGAR TOUR</a>
 					</li>
 					<li>
-						<a class="active" href="/fly"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; LISTA DE FLY</a>
+						<a href="tours"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; LISTA DE TOURS</a>
 					</li>
 				</ul>	
 			</div>
+			
 			<!-- Content here-->
 			<div class="container-fluid">
-				<div class="table-responsive">
-					<table class="table table-dark table-sm">
-						<thead>
-							<tr class="text-center roboto-medium">
-								<th>#</th>
-                                <th>NAME</th>
-								<th>ORIGIN LAT</th>
-								<th>ORIGIN LNG</th>
-								<th>DESTINY_LNG</th>
-								<th>DESTINY_LAT</th>
-								<th>PRICE</th>
-                                <th>ORIGIN NAME</th>
-                                <th>DESTINY NAME</th>
-                                <th>AEREO_LINE</th>
-								<th>ACTUALIZAR</th>
-								<th>ELIMINAR</th>
-							</tr>
-						</thead>
-
-						<tbody>
-							<% flys.forEach((fly,index)=>{ %>
-							<tr class="text-center">
-								<td><%= index + 1 %></td>
-								<td><%= fly.name %></td>
-								<td><%= fly.origin_lat%></td>
-                                <td><%= fly.origin_lng %></td>
-								<td><%= fly.destiny_lng%></td>
-                                <td><%= fly.destiny_lat%></td>
-								<td><%= fly.price %></td>
-                                <td><%= fly.origin_name%></td>
-								<td><%= fly.destiny_name %></td>
-								<td><%= fly.aereo_line%></td>
-								<td>
-									<a href="/fly/<%= fly._id %>/editar" class="btn btn-success">
-										<i class="fas fa-sync-alt"></i>    
-									</a>
-								</td>
-								<td>
-									<form action="/fly/<%= fly._id %>/eliminar" method="POST">
-										<button type="submit" class="btn btn-warning">
-											<i class="far fa-trash-alt"></i>
-										</button>
-									</form>
-								</td>
-							</tr>
-							<% }); %>
-						</tbody>
-					
-					</table>
-				</div>
-			</div>
+				<form action="/guardar-tour" class="form-neon" autocomplete="off" method="post" onsubmit="return validarCampos()" >
+					<fieldset>
+						<legend><i class="fas fa-user"></i> &nbsp; Información básica</legend>
+						<div class="container-fluid">
+							<div class="row">
+								<div class="col-12 col-md-6">
+									<div class="form-group">
+										<label for="name" class="bmd-label-floating">Nombre Tour:</label>
+										<input type="text" class="form-control" id="name" name="name" required>
+									</div>
+								</div>
+								<div class="col-12 col-md-4">
+									<div class="form-group">
+										<label for="id_customer" class="bmd-label-floating">Cliente:</label>
+										<select class="form-control"  id="id_customer" name="id_customer" required>
+                                            <% customers.forEach((customer) => { %>
+                                                <option value="<%= customer._id %>"><%= customer.full_name %></option>
+                                            <% }); %>
+                                        </select>
+									</div>
+								</div>
+							</div>
+						</div>
+					</fieldset>
+					<br><br><br>
+					<p class="text-center" style="margin-top: 40px;">
+						<button type="reset" class="btn btn-raised btn-secondary btn-sm"><i class="fas fa-paint-roller"></i> &nbsp; LIMPIAR</button>
+						&nbsp; &nbsp;
+						<button type="submit" class="btn btn-raised btn-info btn-sm"><i class="far fa-save"></i> &nbsp; GUARDAR</button>
+					</p>
+				</form>
+			</div>	
 
 		</section>
 	</main>
+	<script>
+		function validarCampos() {
+    // Obtener los valores de los campos
+    var name = document.getElementById('name').value;
+    var id_customer = document.getElementById('id_customer').value;
+
+    // Validar que todos los campos estén completos
+    if (name === '' || id_customer === '' ) {
+        // Mostrar mensaje de error si algún campo está vacío
+        alert('Por favor, complete todos los campos antes de guardar.');
+        return false; // Evitar que el formulario se envíe
+    }
+
+    // Mostrar mensaje de éxito
+    alert('Los datos se han guardado correctamente.');
+
+    window.location.href = '/tours';
+
+    return true; // Permitir que el formulario se envíe
+}
+
+    </script>
 	
 	
 	<!--=============================================
 	=            Include JavaScript files           =
 	==============================================-->
 	<!-- jQuery V3.4.1 -->
-	<script src="./js/jquery-3.4.1.min.js" ></script>
+	<script src="/js/jquery-3.4.1.min.js" ></script>
 
 	<!-- popper -->
-	<script src="./js/popper.min.js" ></script>
+	<script src="/js/popper.min.js" ></script>
 
 	<!-- Bootstrap V4.3 -->
-	<script src="./js/bootstrap.min.js" ></script>
+	<script src="/js/bootstrap.min.js" ></script>
 
 	<!-- jQuery Custom Content Scroller V3.1.5 -->
-	<script src="./js/jquery.mCustomScrollbar.concat.min.js" ></script>
+	<script src="/js/jquery.mCustomScrollbar.concat.min.js" ></script>
 
 	<!-- Bootstrap Material Design V4.0 -->
-	<script src="./js/bootstrap-material-design.min.js" ></script>
+	<script src="/js/bootstrap-material-design.min.js" ></script>
 	<script>$(document).ready(function() { $('body').bootstrapMaterialDesign(); });</script>
 
-	<script src="./js/main.js" ></script>
+	<script src="/js/main.js" ></script>
 </body>
 </html>

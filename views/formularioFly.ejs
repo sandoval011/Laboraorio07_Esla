@@ -93,55 +93,55 @@
 							<div class="row">
 								<div class="col-12 col-md-6">
 									<div class="form-group">
-										<label for="cliente_dni" class="bmd-label-floating">Nombre:</label>
+										<label for="name" class="bmd-label-floating">Nombre:</label>
 										<input type="text"  class="form-control" id="name" name="name" required maxlength="27">
 									</div>
 								</div>
 								<div class="col-12 col-md-6">
 									<div class="form-group">
-										<label for="cliente_nombre" class="bmd-label-floating">Latitud de Origen:</label>
-										<input type="text"  class="form-control"  name="origin_lat" id="origin_lat" required  maxlength="40">
+										<label for="origin_lat" class="bmd-label-floating">Latitud de Origen:</label>
+										<input type="number"  class="form-control"  name="origin_lat" id="origin_lat" required>
 									</div>
 								</div>
 								<div class="col-12 col-md-4">
 									<div class="form-group">
-										<label for="cliente_apellido" class="bmd-label-floating">Longitud de Origen:</label>
-										<input type="text"  class="form-control" name="origin_lng" id="origin_lng" required maxlength="40">
+										<label for="origin_lng" class="bmd-label-floating">Longitud de Origen:</label>
+										<input type="number"  class="form-control" name="origin_lng" id="origin_lng" required>
 									</div>
 								</div>
 								<div class="col-12 col-md-4">
 									<div class="form-group">
-										<label for="cliente_telefono" class="bmd-label-floating">Longitud de Destino:</label>
-										<input type="text" class="form-control" name="destiny_lng" id="destiny_lng" required maxlength="20">
+										<label for="destiny_lng" class="bmd-label-floating">Longitud de Destino:</label>
+										<input type="number" class="form-control" name="destiny_lng" id="destiny_lng" required >
 									</div>
 								</div>
 								<div class="col-12 col-md-4">
 									<div class="form-group">
-										<label for="cliente_telefono" class="bmd-label-floating">Latitud de Destino:</label>
-										<input type="text" class="form-control"  name="destiny_lat" id="destiny_lat" required maxlength="20">
+										<label for="destiny_lat" class="bmd-label-floating">Latitud de Destino:</label>
+										<input type="number" class="form-control"  name="destiny_lat" id="destiny_lat" required >
 									</div>
 								</div>
 								<div class="col-12 col-md-4">
 									<div class="form-group">
-										<label for="cliente_telefono" class="bmd-label-floating">Precio:</label>
+										<label for="price" class="bmd-label-floating">Precio:</label>
 										<input type="number"  class="form-control"  name="price" id="price" required maxlength="20">
 									</div>
 								</div>
 								<div class="col-12 col-md-4">
 									<div class="form-group">
-										<label for="cliente_telefono" class="bmd-label-floating">Nombre del Origen:</label>
+										<label for="origin_name" class="bmd-label-floating">Nombre del Origen:</label>
 										<input type="text" class="form-control" name="origin_name" id="origin_name" required maxlength="20">
 									</div>
 								</div>
 								<div class="col-12 col-md-4">
 									<div class="form-group">
-										<label for="cliente_telefono" class="bmd-label-floating">Nombre del Destino:</label>
+										<label for="destiny_name" class="bmd-label-floating">Nombre del Destino:</label>
 										<input type="text" class="form-control" name="destiny_name" id="destiny_name" required maxlength="20">
 									</div>
 								</div>
 								<div class="col-12 col-md-4">
 									<div class="form-group">
-										<label for="cliente_telefono" class="bmd-label-floating">Línea Aérea:</label>
+										<label for="aereo_line" class="bmd-label-floating">Línea Aérea:</label>
 										<input type="text" class="form-control"  name="aereo_line" id="aereo_line" required maxlength="20">
 									</div>
 								</div>
@@ -149,7 +149,7 @@
 						</div>
 					</fieldset>
 					<br><br><br>
-					<p class="text-center" style="margin-top: 40px;">
+					<p class="text-center" style="margin-top: 15px;">
 						<button type="reset" class="btn btn-raised btn-secondary btn-sm"><i class="fas fa-paint-roller"></i> &nbsp; LIMPIAR</button>
 						&nbsp; &nbsp;
 						<button type="submit" class="btn btn-raised btn-info btn-sm"><i class="far fa-save"></i> &nbsp; GUARDAR</button>

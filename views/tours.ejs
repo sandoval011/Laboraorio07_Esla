@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-	<title>Lista de Vuelos</title>
+	<meta name="viewport"
+		content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<title>Lista de Tickets</title>
 
 	<!-- Normalize V8.0.1 -->
 	<link rel="stylesheet" href="/css/normalize.css">
@@ -21,17 +23,19 @@
 	<link rel="stylesheet" href="/css/sweetalert2.min.css">
 
 	<!-- Sweet Alert V8.13.0 JS file-->
-	<script src="/js/sweetalert2.min.js" ></script>
+	<script src="/js/sweetalert2.min.js"></script>
 
 	<!-- jQuery Custom Content Scroller V3.1.5 -->
 	<link rel="stylesheet" href="/css/jquery.mCustomScrollbar.css">
-	
+
 	<!-- General Styles -->
 	<link rel="stylesheet" href="/css/style.css">
 
 
 </head>
+
 <body>
+
 	<!-- Main container -->
 	<main class="full-box main-container">
 		<!-- Nav lateral -->
@@ -69,32 +73,35 @@
 			</div>
 		</section>
 
+
 		<!-- Page content -->
 		<section class="full-box page-content">
+
 			<nav class="full-box navbar-info">
 				<a href="#" class="float-left show-nav-lateral">
 					<i class="fas fa-exchange-alt"></i>
 				</a>
-				
 			</nav>
 
 			<!-- Page header -->
 			<div class="full-box page-header">
 				<h3 class="text-left">
-					<i class="fas fa-clipboard-list fa-fw"></i> &nbsp; LISTA DE VUELOS
+					<i class="fas fa-clipboard-list fa-fw"></i> &nbsp; LISTA DE TOURS
 				</h3>
 			</div>
 
 			<div class="container-fluid">
 				<ul class="full-box list-unstyled page-nav-tabs">
 					<li>
-						<a href="/formularioFly"><i class="fas fa-plus fa-fw"></i> &nbsp; AGREGAR FLY</a>
+						<a href="formularioTour"><i class="fas fa-plus fa-fw"></i> &nbsp; AGREGAR TOUR</a>
 					</li>
 					<li>
-						<a class="active" href="/fly"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; LISTA DE FLY</a>
+						<a class="active" href="tours"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; LISTA DE
+							TOURS</a>
 					</li>
-				</ul>	
+				</ul>
 			</div>
+
 			<!-- Content here-->
 			<div class="container-fluid">
 				<div class="table-responsive">
@@ -102,76 +109,70 @@
 						<thead>
 							<tr class="text-center roboto-medium">
 								<th>#</th>
-                                <th>NAME</th>
-								<th>ORIGIN LAT</th>
-								<th>ORIGIN LNG</th>
-								<th>DESTINY_LNG</th>
-								<th>DESTINY_LAT</th>
-								<th>PRICE</th>
-                                <th>ORIGIN NAME</th>
-                                <th>DESTINY NAME</th>
-                                <th>AEREO_LINE</th>
+								<th>NOMBRE</th>
+								<th>CLIENTE</th>
 								<th>ACTUALIZAR</th>
 								<th>ELIMINAR</th>
 							</tr>
 						</thead>
-
 						<tbody>
-							<% flys.forEach((fly,index)=>{ %>
-							<tr class="text-center">
-								<td><%= index + 1 %></td>
-								<td><%= fly.name %></td>
-								<td><%= fly.origin_lat%></td>
-                                <td><%= fly.origin_lng %></td>
-								<td><%= fly.destiny_lng%></td>
-                                <td><%= fly.destiny_lat%></td>
-								<td><%= fly.price %></td>
-                                <td><%= fly.origin_name%></td>
-								<td><%= fly.destiny_name %></td>
-								<td><%= fly.aereo_line%></td>
-								<td>
-									<a href="/fly/<%= fly._id %>/editar" class="btn btn-success">
-										<i class="fas fa-sync-alt"></i>    
-									</a>
-								</td>
-								<td>
-									<form action="/fly/<%= fly._id %>/eliminar" method="POST">
-										<button type="submit" class="btn btn-warning">
-											<i class="far fa-trash-alt"></i>
-										</button>
-									</form>
-								</td>
-							</tr>
-							<% }); %>
+							<% tours.forEach((tour, index)=> { %>
+								<tr class="text-center">
+									<td>
+										<%= index + 1 %>
+									</td>
+									<td>
+										<%= tour.name %>
+									</td>
+									<td>
+										<%= tour.id_customer.full_name %>
+									</td>
+									<td>
+										<form action="/tours/<%= tour._id %>/editar" method="GET"
+											style="display: inline;">
+											<button type="submit" class="btn btn-success">
+												<i class="fas fa-sync-alt"></i> Actualizar
+											</button>
+										</form>
+									</td>
+									<td>
+										<form action="/tours/<%= tour._id %>/eliminar" method="POST"
+											style="display: inline;">
+											<button type="submit" class="btn btn-warning">
+												<i class="far fa-trash-alt"></i> Eliminar
+											</button>
+										</form>
+									</td>
+								</tr>
+								<% }); %>
 						</tbody>
-					
 					</table>
 				</div>
 			</div>
-
 		</section>
 	</main>
-	
-	
+
+
 	<!--=============================================
 	=            Include JavaScript files           =
 	==============================================-->
 	<!-- jQuery V3.4.1 -->
-	<script src="./js/jquery-3.4.1.min.js" ></script>
+	<script src="/js/jquery-3.4.1.min.js"></script>
 
 	<!-- popper -->
-	<script src="./js/popper.min.js" ></script>
+	<script src="/js/popper.min.js"></script>
 
 	<!-- Bootstrap V4.3 -->
-	<script src="./js/bootstrap.min.js" ></script>
+	<script src="/js/bootstrap.min.js"></script>
 
 	<!-- jQuery Custom Content Scroller V3.1.5 -->
-	<script src="./js/jquery.mCustomScrollbar.concat.min.js" ></script>
+	<script src="/js/jquery.mCustomScrollbar.concat.min.js"></script>
 
 	<!-- Bootstrap Material Design V4.0 -->
-	<script src="./js/bootstrap-material-design.min.js" ></script>
-	<script>$(document).ready(function() { $('body').bootstrapMaterialDesign(); });</script>
+	<script src="/js/bootstrap-material-design.min.js"></script>
+	<script>$(document).ready(function () { $('body').bootstrapMaterialDesign(); });</script>
 
-	<script src="./js/main.js" ></script>
+	<script src="/js/main.js"></script>
 </body>
+
 </html>

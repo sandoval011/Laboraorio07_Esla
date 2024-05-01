@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-	<title>Nuevo cliente</title>
+	<meta name="viewport"
+		content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<title>Actualizar Tour</title>
 
 	<!-- Normalize V8.0.1 -->
 	<link rel="stylesheet" href="/css/normalize.css">
@@ -23,21 +25,22 @@
 	<link rel="stylesheet" href="/css/sweetalert2.min.css">
 
 	<!-- Sweet Alert V8.13.0 JS file-->
-	<script src="/js/sweetalert2.min.js" ></script>
+	<script src="/js/sweetalert2.min.js"></script>
 
 	<!-- jQuery Custom Content Scroller V3.1.5 -->
 	<link rel="stylesheet" href="/css/jquery.mCustomScrollbar.css">
-	
+
 	<!-- General Styles -->
 	<link rel="stylesheet" href="/css/style.css">
 
+
 </head>
+
 <body>
-	
+
 	<!-- Main container -->
 	<main class="full-box main-container">
-
-
+		<!-- Nav lateral -->
 		<section class="full-box nav-lateral">
 			<div class="full-box nav-lateral-bg show-nav-lateral"></div>
 			<div class="full-box nav-lateral-content">
@@ -72,6 +75,7 @@
 			</div>
 		</section>
 
+
 		<!-- Page content -->
 		<section class="full-box page-content">
 			<nav class="full-box navbar-info">
@@ -79,83 +83,64 @@
 					<i class="fas fa-exchange-alt"></i>
 				</a>
 			</nav>
-
 			<!-- Page header -->
 			<div class="full-box page-header">
 				<h3 class="text-left">
-					<i class="fas fa-plus fa-fw"></i> &nbsp; EDITAR HOTEL
+					<i class="fas fa-sync-alt fa-fw"></i> &nbsp; ACTUALIZAR TOUR
 				</h3>
 			</div>
-			<!-- Content here-->
 
+
+			<!-- Content here-->
 			<div class="container-fluid">
-				<form action="/hoteles/<%= hotel._id %>/editar" method="POST" class="form-neon" autocomplete="off" onsubmit="if(validateForm()) showSuccessAlert()">
+                <form action="/tours/<%= tour._id %>/editar" class="form-neon" autocomplete="off" method="POST" onsubmit="if(validateForm()) showSuccessAlert()">
 					<fieldset>
 						<legend><i class="fas fa-user"></i> &nbsp; Información básica</legend>
 						<div class="container-fluid">
 							<div class="row">
-								<div class="col-12 col-md-6">
+                                <div class="form-group">
+                                    <label for="name" class="bmd-label-floating">Nombre Tour:</label>
+                                    <input type="text" class="form-control" id="name" name="name" value="<%= tour.name %>"  required>
+                                </div>
+                                <div class="col-12 col-md-4">
 									<div class="form-group">
-										<label for="cliente_dni" class="bmd-label-floating">Nombre del hotel</label>
-										<input type="text" pattern="[a-zA-Z0-9-]{1,27}" class="form-control" id="name" name="name" value="<%= hotel.name %>" required maxlength="27">
-									</div>
-								</div>
-								<div class="col-12 col-md-6">
-									<div class="form-group">
-										<label for="cliente_nombre" class="bmd-label-floating">Dirección</label>
-										<input type="text" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{1,40}" class="form-control" value="<%= hotel.address %>" name="address" id="address" required  maxlength="40">
-									</div>
-								</div>
-								<div class="col-12 col-md-4">
-									<div class="form-group">
-										<label for="cliente_apellido" class="bmd-label-floating">Valoración</label>
-										<input type="number" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{1,40}" class="form-control" value="<%= hotel.rating %>" name="rating" id="rating" required maxlength="40">
-									</div>
-								</div>
-								<div class="col-12 col-md-4">
-									<div class="form-group">
-										<label for="cliente_telefono" class="bmd-label-floating">Precio</label>
-										<input type="number" pattern="[0-9()+]{1,20}" class="form-control" value="<%= hotel.price %>" name="price" id="price" required maxlength="20">
+										<label for="id_customer" class="bmd-label-floating">Cliente:</label>
+										<select class="form-control" id="id_customer"
+											name="id_customer" required>
+                                            <% customers.forEach((customer) => { %>
+                                                <option value="<%= customer._id %>" <%= customer._id.toString() === tour.id_customer.toString() ? 'selected' : '' %>><%= customer.full_name %></option>
+                                            <% }); %>
+                                        </select>
 									</div>
 								</div>
 							</div>
 						</div>
 					</fieldset>
-					<br><br><br>
-
 					<p class="text-center" style="margin-top: 40px;">
-						<button type="button" class="btn btn-raised btn-secondary btn-sm" onclick="window.location.href='/hoteles'"><i class="bi bi-x-circle-fill"></i> &nbsp; CANCELAR</button>
+						<button type="button" class="btn btn-raised btn-secondary btn-sm"
+							onclick="window.location.href='/tours'"><i class="bi bi-x-circle-fill"></i> &nbsp;
+							CANCELAR</button>
 						&nbsp; &nbsp;
-						<button type="submit" class="btn btn-raised btn-info btn-sm" onclick="return validateForm()"><i class="bi bi-pencil-square"></i> &nbsp; ACTUALIZAR</button>
+						<button type="submit" class="btn btn-raised btn-info btn-sm" onclick="return validateForm()"><i
+								class="bi bi-pencil-square"></i> &nbsp; ACTUALIZAR</button>
 					</p>
 				</form>
-			</div>	
+			</div>
+
 		</section>
 	</main>
-	<script>
-		var originalValues = {
-			name: '<%= hotel.name %>',
-			address: '<%= hotel.address %>',
-			rating: '<%= hotel.rating %>',
-			price: '<%= hotel.price %>'
-		};
-		function validateForm() {
-			var formChanged = false;
-	
-			if (document.getElementById('name').value !== originalValues.name) {
-				formChanged = true;
-			}
-			if (document.getElementById('address').value !== originalValues.address) {
-				formChanged = true;
-			}
-			if (document.getElementById('rating').value !== originalValues.rating) {
-				formChanged = true;
-			}
-			if (document.getElementById('price').value !== originalValues.price) {
-				formChanged = true;
-			}
-
-			if (formChanged) {
+    <script>
+        function validateForm() {
+            var formChanged = false;
+    
+            if (document.getElementById('name').value !== '<%= tour.name %>') {
+                formChanged = true;
+            }
+            if (document.getElementById('id_customer').value !== '<%= tour.id_customer %>') {
+                formChanged = true;
+            }
+    
+            if (formChanged) {
                 return true;
             } else {
                 alert("No se ha modificado ningún campo. No se puede actualizar.");
@@ -166,28 +151,29 @@
         function showSuccessAlert() {
             alert("¡El formulario se ha actualizado correctamente!");
         }
-	</script> 
-	
+    </script>
+    
+
 	<!--=============================================
 	=            Include JavaScript files           =
 	==============================================-->
 	<!-- jQuery V3.4.1 -->
-	<script src="./js/jquery-3.4.1.min.js" ></script>
+	<script src="/js/jquery-3.4.1.min.js"></script>
 
 	<!-- popper -->
-	<script src="./js/popper.min.js" ></script>
+	<script src="/js/popper.min.js"></script>
 
 	<!-- Bootstrap V4.3 -->
-	<script src="./js/bootstrap.min.js" ></script>
+	<script src="/js/bootstrap.min.js"></script>
 
 	<!-- jQuery Custom Content Scroller V3.1.5 -->
-	<script src="./js/jquery.mCustomScrollbar.concat.min.js" ></script>
+	<script src="/js/jquery.mCustomScrollbar.concat.min.js"></script>
 
 	<!-- Bootstrap Material Design V4.0 -->
-	<script src="./js/bootstrap-material-design.min.js" ></script>
-	<script>$(document).ready(function() { $('body').bootstrapMaterialDesign(); });</script>
-	
-	<script src="./js/main.js" ></script>
+	<script src="/js/bootstrap-material-design.min.js"></script>
+	<script>$(document).ready(function () { $('body').bootstrapMaterialDesign(); });</script>
 
+	<script src="/js/main.js"></script>
 </body>
+
 </html>

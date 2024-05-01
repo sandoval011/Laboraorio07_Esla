@@ -44,113 +44,42 @@
 					<i class="far fa-times-circle show-nav-lateral"></i>
 					<img src="/assets/avatar/esla.jpg" class="img-fluid" alt="Avatar">
 					<figcaption class="roboto-medium text-center">
-						ADMIN ESLA <br><small class="roboto-condensed-light">Web Developer</small>
+						<%= user.name %> <br><small class="roboto-condensed-light"><%= user.role %></small>
 					</figcaption>
 				</figure>
 				<div class="full-box nav-lateral-bar"></div>
 				<nav class="full-box nav-lateral-menu">
 					<ul>
-						<li>
-							<a href="home.ejs"><i class="fab fa-dashcube fa-fw"></i> &nbsp; Dashboard</a>
-						</li>
-
-						<li>
-							<a href="#" class="nav-btn-submenu"><i class="fas fa-users fa-fw"></i> &nbsp; Hoteles <i class="fas fa-chevron-down"></i></a>
-							<ul>
-								<li>
-									<a href="client-new.html"><i class="fas fa-plus fa-fw"></i> &nbsp; Agregar Hotel</a>
-								</li>
-								<li>
-									<a href="client-list.html"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista de Hoteles</a>
-								</li>
-								<li>
-									<a href="client-search.html"><i class="fas fa-search fa-fw"></i> &nbsp; Buscar Hotel</a>
-								</li>
-							</ul>
-						</li>
-
-						<li>
-							<a href="#" class="nav-btn-submenu"><i class="fas fa-pallet fa-fw"></i> &nbsp; Reservaciones <i class="fas fa-chevron-down"></i></a>
-							<ul>
-								<li>
-									<a href="item-new.html"><i class="fas fa-plus fa-fw"></i> &nbsp; Agregar Reserva</a>
-								</li>
-								<li>
-									<a href="item-list.html"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista de Reservaciones</a>
-								</li>
-								<li>
-									<a href="item-search.html"><i class="fas fa-search fa-fw"></i> &nbsp; Buscar Reservaciones</a>
-								</li>
-							</ul>
-						</li>
-
-						<li>
-							<a href="#" class="nav-btn-submenu"><i class="fas fa-file-invoice-dollar fa-fw"></i> &nbsp; Empleados <i class="fas fa-chevron-down"></i></a>
-							<ul>
-								<li>
-									<a href="formularioCustomer"><i class="fas fa-plus fa-fw"></i> &nbsp; Nuevo Empleado</a>
-								</li>
-								<li>
-									<a href="customers"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista de Empleados</a>
-								</li>
-								<li>
-									<a href="reservation-search.html"><i class="fas fa-search-dollar fa-fw"></i> &nbsp; Buscar Empleados</a>
-								</li>
-							</ul>
-						</li>
-
-						<li>
-							<a href="#" class="nav-btn-submenu"><i class="fas  fa-user-secret fa-fw"></i> &nbsp; Tours <i class="fas fa-chevron-down"></i></a>
-							<ul>
-								<li>
-									<a href="user-new.html"><i class="fas fa-plus fa-fw"></i> &nbsp; Nuevo Tours</a>
-								</li>
-								<li>
-									<a href="user-list.html"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista de Tours</a>
-								</li>
-								<li>
-									<a href="user-search.html"><i class="fas fa-search fa-fw"></i> &nbsp; Buscar Tours</a>
-								</li>
-							</ul>
-						</li>
-
-						<li>
-							<a href="#" class="nav-btn-submenu"><i class="fas  fa-user-secret fa-fw"></i> &nbsp; Fly <i class="fas fa-chevron-down"></i></a>
-							<ul>
-								<li>
-									<a href="user-new.html"><i class="fas fa-plus fa-fw"></i> &nbsp; Nuevo Fly</a>
-								</li>
-								<li>
-									<a href="user-list.html"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista de Fly</a>
-								</li>
-								<li>
-									<a href="user-search.html"><i class="fas fa-search fa-fw"></i> &nbsp; Buscar Fly</a>
-								</li>
-							</ul>
-						</li>
-
-
-						<li>
-							<a href="#" class="nav-btn-submenu"><i class="fas  fa-user-secret fa-fw"></i> &nbsp; Ticket <i class="fas fa-chevron-down"></i></a>
-							<ul>
-								<li>
-									<a href="user-new.html"><i class="fas fa-plus fa-fw"></i> &nbsp; Nuevo Ticket</a>
-								</li>
-								<li>
-									<a href="user-list.html"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista de Ticket</a>
-								</li>
-								<li>
-									<a href="user-search.html"><i class="fas fa-search fa-fw"></i> &nbsp; Buscar Ticket</a>
-								</li>
-							</ul>
-						</li>
+						<% sidebarData.forEach(item => { %>
+							<li>
+								<% if (item.submenu) { %>
+									<a href="#" class="nav-btn-submenu">
+										<i class="<%= item.icon %>"></i> &nbsp; <%= item.title %> <i class="fas fa-chevron-down"></i>
+									</a>
+									<ul>
+										<% item.submenu.forEach(subitem => { %>
+											<li><a href="<%= subitem.link %>"><i class="fas fa-plus fa-fw"></i> &nbsp; <%= subitem.title %></a></li>
+										<% }); %>
+									</ul>
+								<% } else { %>
+									<a href="<%= item.link %>"><i class="<%= item.icon %>"></i> &nbsp; <%= item.title %></a>
+								<% } %>
+							</li>
+						<% }); %>
 					</ul>
 				</nav>
 			</div>
 		</section>
 
+
 		<!-- Page content -->
 		<section class="full-box page-content">
+
+			<nav class="full-box navbar-info">
+				<a href="#" class="float-left show-nav-lateral">
+					<i class="fas fa-exchange-alt"></i>
+				</a>
+			</nav>
 			<!-- Page header -->
 			<div class="full-box page-header">
 				<h3 class="text-left">

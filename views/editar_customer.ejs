@@ -94,7 +94,7 @@
 
 			<!-- Content here-->
 			<div class="container-fluid">
-				<form action="/customers/<%= customer._id %>/editar" class="form-neon" autocomplete="off" method="post" onsubmit="return validateForm()">
+				<form action="/customers/<%= customer._id %>/editar" class="form-neon" autocomplete="off" method="post" onsubmit="if(validateForm()) showSuccessAlert()">
 					<fieldset>
 						<legend><i class="fas fa-user"></i> &nbsp; Información básica</legend>
 						<div class="container-fluid">
@@ -109,7 +109,7 @@
 								<div class="col-12 col-md-6">
 									<div class="form-group">
 										<label for="credit_card" class="bmd-label-floating">Tarjeta de Crédito:</label>
-										<input type="text" class="form-control" id="credit_card" name="credit_card"
+										<input type="number" class="form-control" id="credit_card" maxlength="10" name="credit_card"
 											value="<%= customer.credit_card %>" required>
 									</div>
 								</div>
@@ -138,7 +138,7 @@
 								<div class="col-12 col-md-4">
 									<div class="form-group">
 										<label for="phone_number" class="bmd-label-floating">Número de Teléfono:</label>
-										<input type="number" class="form-control" name="phone_number" id="phone_number"
+										<input type="text" class="form-control" name="phone_number" pattern="[0-9]{9}" maxlength="9" id="phone_number" required title="El teléfono debe contener exactamente 9 números"
 											value="<%= customer.phone_number %>" required>
 									</div>
 								</div>
@@ -188,13 +188,16 @@
 			}
 
 			if (formChanged) {
-				alert("¡El formulario se ha actualizado correctamente!");
-				return true;
-			} else {
-				alert("No se ha modificado ningún campo. No se puede actualizar.");
-				return false;
-			}
-		}
+                return true;
+            } else {
+                alert("No se ha modificado ningún campo. No se puede actualizar.");
+                return false;
+            }
+        }
+    
+        function showSuccessAlert() {
+            alert("¡El formulario se ha actualizado correctamente!");
+        }
 	</script>
 
 

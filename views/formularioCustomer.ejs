@@ -108,13 +108,13 @@
 								<div class="col-12 col-md-6">
 									<div class="form-group">
 										<label for="full_name" class="bmd-label-floating">Nombre Completo:</label>
-										<input type="text" class="form-control" id="full_name" name="full_name" maxlength="27" required>
+										<input type="text" class="form-control" id="full_name" name="full_name" required>
 									</div>
 								</div>
 								<div class="col-12 col-md-6">
 									<div class="form-group">
 										<label for="credit_card" class="bmd-label-floating">Tarjeta de Crédito:</label>
-										<input type="text" class="form-control" id="credit_card" name="credit_card" maxlength="10" required>
+										<input type="tnumber" class="form-control" id="credit_card" name="credit_card" maxlength="10" required>
 									</div>
 								</div>
 								<div class="col-12 col-md-4">
@@ -138,9 +138,9 @@
 								<div class="col-12 col-md-4">
 									<div class="form-group">
 										<label for="phone_number" class="bmd-label-floating">Teléfono</label>
-										<input type="number" class="form-control" id="phone_number" name="phone_number" required >
-									</div>
-								</div>
+										<input type="text" class="form-control" id="phone_number" name="phone_number" pattern="[0-9]{9}" required title="El teléfono debe contener exactamente 9 números">
+									</div>                                                                          
+								</div>																						
 							</div>
 						</div>
 					</fieldset>

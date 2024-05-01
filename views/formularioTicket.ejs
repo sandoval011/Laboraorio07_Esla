@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<title>Nuevo Ticket</title>
+
+	<!-- Normalize V8.0.1 -->
+	<link rel="stylesheet" href="/css/normalize.css">
+
+	<!-- Bootstrap V4.3 -->
+	<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+	<!-- Bootstrap Material Design V4.0 -->
+	<link rel="stylesheet" href="/css/bootstrap-material-design.min.css">
+
+	<!-- Font Awesome V5.9.0 -->
+	<link rel="stylesheet" href="/css/all.css">
+
+	<!-- Sweet Alerts V8.13.0 CSS file -->
+	<link rel="stylesheet" href="/css/sweetalert2.min.css">
+
+	<!-- Sweet Alert V8.13.0 JS file-->
+	<script src="/js/sweetalert2.min.js" ></script>
+
+	<!-- jQuery Custom Content Scroller V3.1.5 -->
+	<link rel="stylesheet" href="/css/jquery.mCustomScrollbar.css">
+	
+	<!-- General Styles -->
+	<link rel="stylesheet" href="/css/style.css">
+
+
+</head>
+<body>
+	
+	<!-- Main container -->
+	<main class="full-box main-container">
+		<!-- Nav lateral -->
+		<!-- Nav lateral -->
+		<section class="full-box nav-lateral">
+			<div class="full-box nav-lateral-bg show-nav-lateral"></div>
+			<div class="full-box nav-lateral-content">
+				<figure class="full-box nav-lateral-avatar">
+					<i class="far fa-times-circle show-nav-lateral"></i>
+					<img src="/assets/avatar/esla.jpg" class="img-fluid" alt="Avatar">
+					<figcaption class="roboto-medium text-center">
+						ADMIN ESLA <br><small class="roboto-condensed-light">Web Developer</small>
+					</figcaption>
+				</figure>
+				<div class="full-box nav-lateral-bar"></div>
+				<nav class="full-box nav-lateral-menu">
+					<ul>
+						<li>
+							<a href="home.ejs"><i class="fab fa-dashcube fa-fw"></i> &nbsp; Dashboard</a>
+						</li>
+
+						<li>
+							<a href="#" class="nav-btn-submenu"><i class="fas fa-users fa-fw"></i> &nbsp; Hoteles <i class="fas fa-chevron-down"></i></a>
+							<ul>
+								<li>
+									<a href="client-new.html"><i class="fas fa-plus fa-fw"></i> &nbsp; Agregar Hotel</a>
+								</li>
+								<li>
+									<a href="client-list.html"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista de Hoteles</a>
+								</li>
+								<li>
+									<a href="client-search.html"><i class="fas fa-search fa-fw"></i> &nbsp; Buscar Hotel</a>
+								</li>
+							</ul>
+						</li>
+
+						<li>
+							<a href="#" class="nav-btn-submenu"><i class="fas fa-pallet fa-fw"></i> &nbsp; Reservaciones <i class="fas fa-chevron-down"></i></a>
+							<ul>
+								<li>
+									<a href="item-new.html"><i class="fas fa-plus fa-fw"></i> &nbsp; Agregar Reserva</a>
+								</li>
+								<li>
+									<a href="item-list.html"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista de Reservaciones</a>
+								</li>
+								<li>
+									<a href="item-search.html"><i class="fas fa-search fa-fw"></i> &nbsp; Buscar Reservaciones</a>
+								</li>
+							</ul>
+						</li>
+
+						<li>
+							<a href="#" class="nav-btn-submenu"><i class="fas fa-file-invoice-dollar fa-fw"></i> &nbsp; Empleados <i class="fas fa-chevron-down"></i></a>
+							<ul>
+								<li>
+									<a href="formularioCustomer"><i class="fas fa-plus fa-fw"></i> &nbsp; Nuevo Empleado</a>
+								</li>
+								<li>
+									<a href="customers"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista de Empleados</a>
+								</li>
+								<li>
+									<a href="reservation-search.html"><i class="fas fa-search-dollar fa-fw"></i> &nbsp; Buscar Empleados</a>
+								</li>
+							</ul>
+						</li>
+
+						<li>
+							<a href="#" class="nav-btn-submenu"><i class="fas  fa-user-secret fa-fw"></i> &nbsp; Tours <i class="fas fa-chevron-down"></i></a>
+							<ul>
+								<li>
+									<a href="user-new.html"><i class="fas fa-plus fa-fw"></i> &nbsp; Nuevo Tours</a>
+								</li>
+								<li>
+									<a href="user-list.html"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista de Tours</a>
+								</li>
+								<li>
+									<a href="user-search.html"><i class="fas fa-search fa-fw"></i> &nbsp; Buscar Tours</a>
+								</li>
+							</ul>
+						</li>
+
+						<li>
+							<a href="#" class="nav-btn-submenu"><i class="fas  fa-user-secret fa-fw"></i> &nbsp; Fly <i class="fas fa-chevron-down"></i></a>
+							<ul>
+								<li>
+									<a href="user-new.html"><i class="fas fa-plus fa-fw"></i> &nbsp; Nuevo Fly</a>
+								</li>
+								<li>
+									<a href="user-list.html"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista de Fly</a>
+								</li>
+								<li>
+									<a href="user-search.html"><i class="fas fa-search fa-fw"></i> &nbsp; Buscar Fly</a>
+								</li>
+							</ul>
+						</li>
+
+
+						<li>
+							<a href="#" class="nav-btn-submenu"><i class="fas  fa-user-secret fa-fw"></i> &nbsp; Ticket <i class="fas fa-chevron-down"></i></a>
+							<ul>
+								<li>
+									<a href="user-new.html"><i class="fas fa-plus fa-fw"></i> &nbsp; Nuevo Ticket</a>
+								</li>
+								<li>
+									<a href="user-list.html"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista de Ticket</a>
+								</li>
+								<li>
+									<a href="user-search.html"><i class="fas fa-search fa-fw"></i> &nbsp; Buscar Ticket</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</nav>
+			</div>
+		</section>
+
+		<!-- Page content -->
+		<section class="full-box page-content">
+			<!-- Page header -->
+			<div class="full-box page-header">
+				<h3 class="text-left">
+					<i class="fas fa-plus fa-fw"></i> &nbsp; AGREGAR TICKET
+				</h3>
+			</div>
+
+			<div class="container-fluid">
+				<ul class="full-box list-unstyled page-nav-tabs">
+					<li>
+						<a class="active" href="formularioTicket"><i class="fas fa-plus fa-fw"></i> &nbsp; AGREGAR TICKET</a>
+					</li>
+					<li>
+						<a href="tickets"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; LISTA DE TICKETS</a>
+					</li>
+				</ul>	
+			</div>
+			
+			<!-- Content here-->
+			<div class="container-fluid">
+				<form action="/guardar-ticket" class="form-neon" autocomplete="off" method="post" onsubmit="return validarCampos()" >
+					<fieldset>
+						<legend><i class="fas fa-user"></i> &nbsp; Información básica</legend>
+						<div class="container-fluid">
+							<div class="row">
+								<div class="col-12 col-md-6">
+									<div class="form-group">
+										<label for="price" class="bmd-label-floating">Precio:</label>
+										<input type="number" class="form-control" id="price" name="price" required>
+									</div>
+								</div>
+								<div class="col-12 col-md-6">
+									<div class="form-group">
+										<label for="tour_id" class="bmd-label-floating">Tour:</label>
+										<select class="form-control" id="tour_id" name="tour_id" required>
+                                            <% tours.forEach((tour) => { %>
+                                                <option value="<%= tour._id %>"><%= tour.name %></option>
+                                            <% }); %>
+                                        </select>
+									</div>
+								</div>
+								<div class="col-12 col-md-4">
+									<div class="form-group">
+										<label for="fly_id" class="bmd-label-floating">Vuelo:</label>
+										<select class="form-control" id="fly_id" name="fly_id" required>
+                                            <% flys.forEach((fly) => { %>
+                                                <option value="<%= fly._id %>"><%= fly.name %></option>
+                                            <% }); %>
+                                        </select>
+									</div>
+								</div>
+								<div class="col-12 col-md-4">
+									<div class="form-group">
+										<label for="customer_id" class="bmd-label-floating">Cliente:</label>
+										<select class="form-control"  id="customer_id" name="customer_id" required>
+                                            <% customers.forEach((customer) => { %>
+                                                <option value="<%= customer._id %>"><%= customer.full_name %></option>
+                                            <% }); %>
+                                        </select>
+									</div>
+								</div>
+								<div class="col-12 col-md-4">
+									<div class="form-group">
+										<label for="departure_date">Fecha de salida:</label>
+										<input type="date" class="form-control" id="departure_date" name="departure_date" required>
+									</div>
+								</div>
+								<div class="col-12 col-md-4">
+									<div class="form-group">
+										<label for="arrival_date">Fecha de llegada:</label>
+										<input type="date" class="form-control" id="arrival_date" name="arrival_date" required >
+									</div>
+								</div>
+                                <div class="col-12 col-md-4">
+									<div class="form-group">
+										<label for="date_purchase">Fecha de compra:</label>
+										<input type="date" class="form-control" id="date_purchase" name="date_purchase" required >
+									</div>
+								</div>
+							</div>
+						</div>
+					</fieldset>
+					<br><br><br>
+					<p class="text-center" style="margin-top: 40px;">
+						<button type="reset" class="btn btn-raised btn-secondary btn-sm"><i class="fas fa-paint-roller"></i> &nbsp; LIMPIAR</button>
+						&nbsp; &nbsp;
+						<button type="submit" class="btn btn-raised btn-info btn-sm"><i class="far fa-save"></i> &nbsp; GUARDAR</button>
+					</p>
+				</form>
+			</div>	
+
+		</section>
+	</main>
+	<script>
+		function validarCampos() {
+    // Obtener los valores de los campos
+    var price = document.getElementById('price').value;
+    var tour_id = document.getElementById('tour_id').value;
+    var fly_id = document.getElementById('fly_id').value;
+    var customer_id = document.getElementById('customer_id').value;
+	var departure_date = document.getElementById('departure_date').value;
+    var arrival_date = document.getElementById('arrival_date').value;
+    var date_purchase = document.getElementById('date_purchase').value;
+
+    // Validar que todos los campos estén completos
+    if (price === '' || tour_id === '' || fly_id === '' || customer_id === '' || departure_date === '' || arrival_date === '' || date_purchase === '' ) {
+        // Mostrar mensaje de error si algún campo está vacío
+        alert('Por favor, complete todos los campos antes de guardar.');
+        return false; // Evitar que el formulario se envíe
+    }
+
+    // Mostrar mensaje de éxito
+    alert('Los datos se han guardado correctamente.');
+
+    window.location.href = '/tickets';
+
+    return true; // Permitir que el formulario se envíe
+}
+
+    </script>
+	
+	
+	<!--=============================================
+	=            Include JavaScript files           =
+	==============================================-->
+	<!-- jQuery V3.4.1 -->
+	<script src="/js/jquery-3.4.1.min.js" ></script>
+
+	<!-- popper -->
+	<script src="/js/popper.min.js" ></script>
+
+	<!-- Bootstrap V4.3 -->
+	<script src="/js/bootstrap.min.js" ></script>
+
+	<!-- jQuery Custom Content Scroller V3.1.5 -->
+	<script src="/js/jquery.mCustomScrollbar.concat.min.js" ></script>
+
+	<!-- Bootstrap Material Design V4.0 -->
+	<script src="/js/bootstrap-material-design.min.js" ></script>
+	<script>$(document).ready(function() { $('body').bootstrapMaterialDesign(); });</script>
+
+	<script src="/js/main.js" ></script>
+</body>
+</html>

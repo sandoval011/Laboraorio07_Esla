@@ -95,55 +95,55 @@
 							<div class="row">
 								<div class="col-12 col-md-6">
 									<div class="form-group">
-										<label for="cliente_dni" class="bmd-label-floating">Nombre:</label>
+										<label for="name" class="bmd-label-floating">Nombre:</label>
 										<input type="text" class="form-control" id="name" name="name" value="<%= fly.name %>" required maxlength="27">
 									</div>
 								</div>
 								<div class="col-12 col-md-6">
 									<div class="form-group">
-										<label for="cliente_nombre" class="bmd-label-floating">Latitud de Origen:</label>
-										<input type="text"  class="form-control" value="<%= fly.origin_lat %>" name="origin_lat" id="origin_lat" required  maxlength="40">
+										<label for="origin_lat" class="bmd-label-floating">Latitud de Origen:</label>
+										<input type="tnumber"  class="form-control" value="<%= fly.origin_lat %>" name="origin_lat" id="origin_lat" required  maxlength="40">
 									</div>
 								</div>
 								<div class="col-12 col-md-4">
 									<div class="form-group">
-										<label for="cliente_apellido" class="bmd-label-floating">Longitud de Origen:</label>
-										<input type="text" class="form-control" value="<%= fly.origin_lng%>" name="origin_lng" id="origin_lng" required maxlength="40">
+										<label for="origin_lng" class="bmd-label-floating">Longitud de Origen:</label>
+										<input type="number" class="form-control" value="<%= fly.origin_lng%>" name="origin_lng" id="origin_lng" required maxlength="40">
 									</div>
 								</div>
 								<div class="col-12 col-md-4">
 									<div class="form-group">
-										<label for="cliente_telefono" class="bmd-label-floating">Longitud de Destino:</label>
-										<input type="text"  class="form-control" value="<%= fly.destiny_lng %>" name="destiny_lng" id="destiny_lng" required maxlength="20">
+										<label for="destiny_lng" class="bmd-label-floating">Longitud de Destino:</label>
+										<input type="number"  class="form-control" value="<%= fly.destiny_lng %>" name="destiny_lng" id="destiny_lng" required maxlength="20">
 									</div>
 								</div>
 								<div class="col-12 col-md-4">
 									<div class="form-group">
-										<label for="cliente_telefono" class="bmd-label-floating">Latitud de Destino:</label>
-										<input type="text" class="form-control" value="<%= fly.destiny_lat %>" name="destiny_lat" id="destiny_lat" required maxlength="20">
+										<label for="destiny_lat" class="bmd-label-floating">Latitud de Destino:</label>
+										<input type="number" class="form-control" value="<%= fly.destiny_lat %>" name="destiny_lat" id="destiny_lat" required maxlength="20">
 									</div>
 								</div>
 								<div class="col-12 col-md-4">
 									<div class="form-group">
-										<label for="cliente_telefono" class="bmd-label-floating">Precio:</label>
-										<input type="text" class="form-control" value="<%= fly.price %>" name="price" id="price" required maxlength="20">
+										<label for="price" class="bmd-label-floating">Precio:</label>
+										<input type="number" class="form-control" value="<%= fly.price %>" name="price" id="price" required maxlength="20">
 									</div>
 								</div>
 								<div class="col-12 col-md-4">
 									<div class="form-group">
-										<label for="cliente_telefono" class="bmd-label-floating">Nombre del Origen:</label>
+										<label for="origin_name" class="bmd-label-floating">Nombre del Origen:</label>
 										<input type="text" class="form-control" value="<%= fly.origin_name %>" name="origin_name" id="origin_name" required maxlength="20">
 									</div>
 								</div>
 								<div class="col-12 col-md-4">
 									<div class="form-group">
-										<label for="cliente_telefono" class="bmd-label-floating">Nombre del Destino:</label>
+										<label for="destiny_name" class="bmd-label-floating">Nombre del Destino:</label>
 										<input type="text"  class="form-control" value="<%= fly.destiny_name %>" name="destiny_name" id="destiny_name" required maxlength="20">
 									</div>
 								</div>
 								<div class="col-12 col-md-4">
 									<div class="form-group">
-										<label for="cliente_telefono" class="bmd-label-floating">Línea Aérea:</label>
+										<label for="aereo_line" class="bmd-label-floating">Línea Aérea:</label>
 										<input type="text"  class="form-control" value="<%= fly.aereo_line %>" name="aereo_line" id="aereo_line" required maxlength="20">
 									</div>
 								</div>
@@ -158,7 +158,6 @@
 						<button type="submit" class="btn btn-raised btn-info btn-sm">
 						<i class="bi bi-pencil-square"></i> &nbsp; ACTUALIZAR
 					   </button>
-
 
 					</p>
 				</form>

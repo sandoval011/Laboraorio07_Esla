@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+		content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<title>Actualizar Ticket</title>
+
+	<!-- Normalize V8.0.1 -->
+	<link rel="stylesheet" href="/css/normalize.css">
+
+	<!-- Bootstrap V4.3 -->
+	<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+	<!-- Bootstrap Material Design V4.0 -->
+	<link rel="stylesheet" href="/css/bootstrap-material-design.min.css">
+
+	<!-- Font Awesome V5.9.0 -->
+	<link rel="stylesheet" href="/css/all.css">
+
+	<!-- Sweet Alerts V8.13.0 CSS file -->
+	<link rel="stylesheet" href="/css/sweetalert2.min.css">
+
+	<!-- Sweet Alert V8.13.0 JS file-->
+	<script src="/js/sweetalert2.min.js"></script>
+
+	<!-- jQuery Custom Content Scroller V3.1.5 -->
+	<link rel="stylesheet" href="/css/jquery.mCustomScrollbar.css">
+
+	<!-- General Styles -->
+	<link rel="stylesheet" href="/css/style.css">
+
+
+</head>
+
+<body>
+
+	<!-- Main container -->
+	<main class="full-box main-container">
+		<!-- Nav lateral -->
+		<section class="full-box nav-lateral">
+			<div class="full-box nav-lateral-bg show-nav-lateral"></div>
+			<div class="full-box nav-lateral-content">
+				<figure class="full-box nav-lateral-avatar">
+					<i class="far fa-times-circle show-nav-lateral"></i>
+					<img src="/assets/avatar/esla.jpg" class="img-fluid" alt="Avatar">
+					<figcaption class="roboto-medium text-center">
+						ADMIN ESLA <br><small class="roboto-condensed-light">Web Developer</small>
+					</figcaption>
+				</figure>
+				<div class="full-box nav-lateral-bar"></div>
+				<nav class="full-box nav-lateral-menu">
+					<ul>
+						<li>
+							<a href="home"><i class="fab fa-dashcube fa-fw"></i> &nbsp; Dashboard</a>
+						</li>
+
+						<li>
+							<a href="#" class="nav-btn-submenu"><i class="fas fa-users fa-fw"></i> &nbsp; Hoteles <i
+									class="fas fa-chevron-down"></i></a>
+							<ul>
+								<li>
+									<a href="client-new.html"><i class="fas fa-plus fa-fw"></i> &nbsp; Agregar Hotel</a>
+								</li>
+								<li>
+									<a href="client-list.html"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista
+										de Hoteles</a>
+								</li>
+								<li>
+									<a href="client-search.html"><i class="fas fa-search fa-fw"></i> &nbsp; Buscar
+										Hotel</a>
+								</li>
+							</ul>
+						</li>
+
+						<li>
+							<a href="#" class="nav-btn-submenu"><i class="fas fa-pallet fa-fw"></i> &nbsp; Reservaciones
+								<i class="fas fa-chevron-down"></i></a>
+							<ul>
+								<li>
+									<a href="item-new.html"><i class="fas fa-plus fa-fw"></i> &nbsp; Agregar Reserva</a>
+								</li>
+								<li>
+									<a href="item-list.html"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista de
+										Reservaciones</a>
+								</li>
+								<li>
+									<a href="item-search.html"><i class="fas fa-search fa-fw"></i> &nbsp; Buscar
+										Reservaciones</a>
+								</li>
+							</ul>
+						</li>
+
+						<li>
+							<a href="#" class="nav-btn-submenu"><i class="fas fa-file-invoice-dollar fa-fw"></i> &nbsp;
+								Empleados <i class="fas fa-chevron-down"></i></a>
+							<ul>
+								<li>
+									<a href="customer_new.ejs"><i class="fas fa-plus fa-fw"></i> &nbsp; Nuevo
+										Empleado</a>
+								</li>
+								<li>
+									<a href="customer-list.ejs"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista
+										de Empleados</a>
+								</li>
+								<li>
+									<a href="reservation-search.html"><i class="fas fa-search-dollar fa-fw"></i> &nbsp;
+										Buscar Empleados</a>
+								</li>
+							</ul>
+						</li>
+
+						<li>
+							<a href="#" class="nav-btn-submenu"><i class="fas  fa-user-secret fa-fw"></i> &nbsp; Tours
+								<i class="fas fa-chevron-down"></i></a>
+							<ul>
+								<li>
+									<a href="user-new.html"><i class="fas fa-plus fa-fw"></i> &nbsp; Nuevo Tours</a>
+								</li>
+								<li>
+									<a href="user-list.html"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista de
+										Tours</a>
+								</li>
+								<li>
+									<a href="user-search.html"><i class="fas fa-search fa-fw"></i> &nbsp; Buscar
+										Tours</a>
+								</li>
+							</ul>
+						</li>
+
+						<li>
+							<a href="#" class="nav-btn-submenu"><i class="fas  fa-user-secret fa-fw"></i> &nbsp; Fly <i
+									class="fas fa-chevron-down"></i></a>
+							<ul>
+								<li>
+									<a href="user-new.html"><i class="fas fa-plus fa-fw"></i> &nbsp; Nuevo Fly</a>
+								</li>
+								<li>
+									<a href="user-list.html"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista de
+										Fly</a>
+								</li>
+								<li>
+									<a href="user-search.html"><i class="fas fa-search fa-fw"></i> &nbsp; Buscar Fly</a>
+								</li>
+							</ul>
+						</li>
+
+
+						<li>
+							<a href="#" class="nav-btn-submenu"><i class="fas  fa-user-secret fa-fw"></i> &nbsp; Ticket
+								<i class="fas fa-chevron-down"></i></a>
+							<ul>
+								<li>
+									<a href="user-new.html"><i class="fas fa-plus fa-fw"></i> &nbsp; Nuevo Ticket</a>
+								</li>
+								<li>
+									<a href="user-list.html"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista de
+										Ticket</a>
+								</li>
+								<li>
+									<a href="user-search.html"><i class="fas fa-search fa-fw"></i> &nbsp; Buscar
+										Ticket</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</nav>
+			</div>
+		</section>
+
+		<!-- Page content -->
+		<section class="full-box page-content">
+			<!-- Page header -->
+			<div class="full-box page-header">
+				<h3 class="text-left">
+					<i class="fas fa-sync-alt fa-fw"></i> &nbsp; ACTUALIZAR TICKET
+				</h3>
+			</div>
+
+			<!-- Content here-->
+			<div class="container-fluid">
+				<form action="/tickets/<%= ticket._id %>/editar" class="form-neon" autocomplete="off" method="post" onsubmit="return validateForm()">
+					<fieldset>
+						<legend><i class="fas fa-user"></i> &nbsp; Información básica</legend>
+						<div class="container-fluid">
+							<div class="row">
+								<div class="col-12 col-md-6">
+									<div class="form-group">
+										<label for="price" class="bmd-label-floating">Precio:</label>
+										<input type="number" class="form-control" id="price" name="price"
+											value="<%= ticket.price %>" required>
+									</div>
+								</div>
+								<div class="col-12 col-md-6">
+									<div class="form-group">
+										<label for="tour_id" class="bmd-label-floating">Tour:</label>
+										<select class="form-control" id="tour_id" name="tour_id" required>
+                                            <% tours.forEach((tour) => { %>
+                                                <option value="<%= tour._id %>" <%= tour._id.toString() === ticket.tour_id.toString() ? 'selected' : '' %>><%= tour.name %></option>
+                                            <% }); %>
+                                        </select>
+									</div>
+								</div>
+								<div class="col-12 col-md-4">
+									<div class="form-group">
+										<label for="fly_id" class="bmd-label-floating">Vuelo:</label>
+										<select class="form-control" id="fly_id"
+											name="fly_id" required>
+                                            <% flys.forEach((fly) => { %>
+                                                <option value="<%= fly._id %>" <%= fly._id.toString() === ticket.fly_id.toString() ? 'selected' : '' %>><%= fly.name %></option>
+                                            <% }); %>
+                                        </select>
+									</div>
+								</div>
+                                <div class="col-12 col-md-4">
+									<div class="form-group">
+										<label for="customer_id" class="bmd-label-floating">Cliente:</label>
+										<select class="form-control" id="customer_id"
+											name="customer_id" required>
+                                            <% customers.forEach((customer) => { %>
+                                                <option value="<%= customer._id %>" <%= customer._id.toString() === ticket.customer_id.toString() ? 'selected' : '' %>><%= customer.full_name %></option>
+                                            <% }); %>
+                                        </select>
+									</div>
+								</div>
+								<div class="col-12 col-md-4">
+									<div class="form-group">
+										<label for="departure_date" class="bmd-label-floating">Fecha de salida:</label>
+										<input type="date" class="form-control" name="departure_date"
+											id="departure_date" value="<%= ticket.departure_date %>" required>
+									</div>
+								</div>
+								<div class="col-12 col-md-4">
+									<div class="form-group">
+										<label for="arrival_date" class="bmd-label-floating">Fecha de llegada:</label>
+										<input type="date" class="form-control" name="arrival_date" id="arrival_date"
+											value="<%= ticket.arrival_date %>" required>
+									</div>
+								</div>
+								<div class="col-12 col-md-4">
+									<div class="form-group">
+										<label for="date_purchase" class="bmd-label-floating">Fecha de compra:</label>
+										<input type="date" class="form-control" name="date_purchase" id="date_purchase"
+											value="<%= ticket.date_purchase %>" required>
+									</div>
+								</div>
+							</div>
+						</div>
+					</fieldset>
+					<p class="text-center" style="margin-top: 40px;">
+						<button type="button" class="btn btn-raised btn-secondary btn-sm"
+							onclick="window.location.href='/tickets'"><i class="bi bi-x-circle-fill"></i> &nbsp;
+							CANCELAR</button>
+						&nbsp; &nbsp;
+						<button type="submit" class="btn btn-raised btn-info btn-sm" onclick="return validateForm()"><i
+								class="bi bi-pencil-square"></i> &nbsp; ACTUALIZAR</button>
+					</p>
+				</form>
+			</div>
+
+		</section>
+	</main>
+	<script>
+		var originalValues = {
+			price: '<%= ticket.price %>',
+			tour_id: '<%= tour._id %>',
+			fly_id: '<%= fly._id %>',
+			customer_id: '<%= customer._id %>',
+			departure_date: '<%= ticket.departure_date %>',
+			arrival_date: '<%= cticket.arrival_date %>',
+            date_purchase: '<%= ticket.date_purchase %>'
+		};
+
+		function validateForm() {
+			var formChanged = false;
+
+			if (document.getElementById('price').value !== originalValues.price) {
+				formChanged = true;
+			}
+			if (document.getElementById('tour_id').value !== originalValues.tour_id) {
+				formChanged = true;
+			}
+			if (document.getElementById('fly_id').value !== originalValues.fly_id) {
+				formChanged = true;
+			}
+			if (document.getElementById('customer_id').value !== originalValues.customer_id) {
+				formChanged = true;
+			}
+			if (document.getElementById('departure_date').value !== originalValues.departure_date) {
+				formChanged = true;
+			}
+
+            if (document.getElementById('arrival_date').value !== originalValues.arrival_date) {
+				formChanged = true;
+			}
+			if (document.getElementById('date_purchase').value !== originalValues.date_purchase) {
+				formChanged = true;
+			}
+
+			if (formChanged) {
+				alert("¡El formulario se ha actualizado correctamente!");
+				return true;
+			} else {
+				alert("No se ha modificado ningún campo. No se puede actualizar.");
+				return false;
+			}
+		}
+	</script>
+
+
+	<!--=============================================
+	=            Include JavaScript files           =
+	==============================================-->
+	<!-- jQuery V3.4.1 -->
+	<script src="/js/jquery-3.4.1.min.js"></script>
+
+	<!-- popper -->
+	<script src="/js/popper.min.js"></script>
+
+	<!-- Bootstrap V4.3 -->
+	<script src="/js/bootstrap.min.js"></script>
+
+	<!-- jQuery Custom Content Scroller V3.1.5 -->
+	<script src="/js/jquery.mCustomScrollbar.concat.min.js"></script>
+
+	<!-- Bootstrap Material Design V4.0 -->
+	<script src="/js/bootstrap-material-design.min.js"></script>
+	<script>$(document).ready(function () { $('body').bootstrapMaterialDesign(); });</script>
+
+	<script src="/js/main.js"></script>
+</body>
+
+</html>

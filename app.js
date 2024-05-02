@@ -49,7 +49,6 @@ app.get('/', (req, res) => {
         {
             title: 'Hoteles',
             icon: 'fas fa-hotel',
-            link: '#',
             submenu: [{
                     title: 'Agregar Hotel',
                     link: 'formulario'
@@ -63,7 +62,6 @@ app.get('/', (req, res) => {
         {
             title: 'Reservaciones',
             icon: 'fas fa-calendar-alt fa-fw',
-            link: '#',
             submenu: [{
                     title: 'Agregar Reserva',
                     link: 'formularioReservation'
@@ -78,7 +76,6 @@ app.get('/', (req, res) => {
         {
             title: 'Empleados',
             icon: 'fas fa-user-tie',
-            link: '#',
             submenu: [{
                     title: 'Nuevo Empleado',
                     link: 'formularioCustomer'
@@ -92,7 +89,6 @@ app.get('/', (req, res) => {
         {
             title: 'Tours',
             icon: 'fas fa-route',
-            link: '#',
             submenu: [{
                     title: 'Nuevo Tours',
                     link: 'formularioTour'
@@ -106,7 +102,6 @@ app.get('/', (req, res) => {
         {
             title: 'Fly',
             icon: 'fas fa-plane',
-            link: '#',
             submenu: [{
                     title: 'Nuevo Fly',
                     link: 'formularioFly'
@@ -120,7 +115,6 @@ app.get('/', (req, res) => {
         {
             title: 'Ticket',
             icon: 'fas fa-ticket-alt',
-            link: '#',
             submenu: [{
                     title: 'Nuevo Ticket',
                     link: 'formularioTicket'
@@ -210,7 +204,6 @@ app.use((req, res, next) => {
         {
             title: 'Hoteles',
             icon: 'fas fa-hotel',
-            link: '#',
             submenu: [{
                     title: 'Agregar Hotel',
                     link: 'formulario'
@@ -224,7 +217,6 @@ app.use((req, res, next) => {
         {
             title: 'Reservaciones',
             icon: 'fas fa-calendar-alt fa-fw',
-            link: '#',
             submenu: [{
                     title: 'Agregar Reserva',
                     link: 'formularioReservation'
@@ -239,7 +231,6 @@ app.use((req, res, next) => {
         {
             title: 'Empleados',
             icon: 'fas fa-user-tie',
-            link: '#',
             submenu: [{
                     title: 'Nuevo Empleado',
                     link: 'formularioCustomer'
@@ -253,7 +244,6 @@ app.use((req, res, next) => {
         {
             title: 'Tours',
             icon: 'fas fa-route',
-            link: '#',
             submenu: [{
                     title: 'Nuevo Tours',
                     link: 'formularioTour'
@@ -267,7 +257,6 @@ app.use((req, res, next) => {
         {
             title: 'Fly',
             icon: 'fas fa-plane',
-            link: '#',
             submenu: [{
                     title: 'Nuevo Fly',
                     link: 'formularioFly'
@@ -281,7 +270,6 @@ app.use((req, res, next) => {
         {
             title: 'Ticket',
             icon: 'fas fa-ticket-alt',
-            link: '#',
             submenu: [{
                     title: 'Nuevo Ticket',
                     link: 'formularioTicket'

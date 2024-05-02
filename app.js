@@ -485,6 +485,9 @@ app.get('/fly', (req, res) => {
         });
 });
 
+
+
+
 app.get('/fly/:id/editar', (req, res) => {
     const flyId = req.params.id;
     Fly.findById(flyId)
@@ -540,6 +543,9 @@ app.post('/fly/:id/editar', (req, res) => {
             res.status(500).send('Error interno del servidor');
         });
 });
+
+
+
 
 app.post('/fly/:id/eliminar', (req, res) => {
     const flyId = req.params.id;
@@ -844,6 +850,7 @@ app.get('/formularioTicket', async (req, res) => {
     }
 });
 
+
 app.post('/guardar-ticket', async (req, res) => {
     try {
         const {
@@ -873,6 +880,9 @@ app.post('/guardar-ticket', async (req, res) => {
     }
 });
 
+
+
+
 app.get('/tickets', async (req, res) => {
     try {
         const tickets = await Ticket.find().populate('tour_id fly_id customer_id');
@@ -885,53 +895,57 @@ app.get('/tickets', async (req, res) => {
     }
 });
 
+
 app.get('/tickets/:id/editar', async (req, res) => {
     try {
-        const ticketId = req.params.id;
-        const ticket = await Ticket.findById(ticketId);
-        const tours = await Tour.find();
-        const flys = await Fly.find();
-        const customers = await Customer.find();
-        res.render('editar_ticket', {
-            ticket: ticket,
-            tours: tours,
-            flys: flys,
-            customers: customers
-        });
+      const ticketId = req.params.id;
+      const ticket = await Ticket.findById(ticketId);
+      const tours = await Tour.find();
+      const flys = await Fly.find();
+      const customers = await Customer.find();
+      res.render('editar_ticket', {
+        ticket: ticket,
+        tours: tours,
+        flys: flys,
+        customers: customers
+      });
     } catch (error) {
-        console.error('Error al obtener el ticket para editar:', error);
-        res.status(500).send('Error interno del servidor');
+      console.error('Error al obtener el ticket para editar:', error);
+      res.status(500).send('Error interno del servidor');
     }
-});
-
-app.post('/tickets/:id/editar', async (req, res) => {
+  });
+  
+  // Actualizar un ticket
+  app.post('/tickets/:id/editar', async (req, res) => {
     try {
-        const ticketId = req.params.id;
-        const {
-            price,
-            tour_id,
-            fly_id,
-            customer_id,
-            departure_date,
-            arrival_date,
-            date_purchase
-        } = req.body;
-        await Ticket.findByIdAndUpdate(ticketId, {
-            price: price,
-            tour_id: tour_id,
-            fly_id: fly_id,
-            customer_id: customer_id,
-            departure_date: departure_date,
-            arrival_date: arrival_date,
-            date_purchase: date_purchase
-        });
-        console.log('Ticket actualizado');
-        res.redirect('/tickets');
+      const ticketId = req.params.id;
+      const {
+        price,
+        tour_id,
+        fly_id,
+        customer_id,
+        departure_date,
+        arrival_date,
+        date_purchase
+      } = req.body;
+      await Ticket.findByIdAndUpdate(ticketId, {
+        price: price,
+        tour_id: tour_id,
+        fly_id: fly_id,
+        customer_id: customer_id,
+        departure_date: departure_date,
+        arrival_date: arrival_date,
+        date_purchase: date_purchase
+      });
+      console.log('Ticket actualizado');
+      res.redirect('/tickets');
     } catch (error) {
-        console.error('Error al actualizar el ticket:', error);
-        res.status(500).send('Error interno del servidor');
+      console.error('Error al actualizar el ticket:', error);
+      res.status(500).send('Error interno del servidor');
     }
-});
+  });
+  
+
 
 app.post('/tickets/:id/eliminar', async (req, res) => {
     try {

@@ -28,8 +28,6 @@
     <!-- General Styles -->
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css">
-
-    
 </head>
 
 <body>
@@ -88,12 +86,14 @@
                         <legend><i class="fas fa-user"></i> &nbsp; Información básica</legend>
                         <div class="container-fluid">
                             <div class="row">
+
                                 <div class="col-12 col-md-6">
                                     <div class="form-group">
                                         <label for="date_reservation">Fecha de Reserva:</label>
                                         <input type="date" class="form-control" id="date_reservation" name="date_reservation" required>
                                     </div>
                                 </div>
+                                
                                 <div class="col-12 col-md-6">
                                     <div class="form-group">
                                         <label for="tour_id">Tour:</label>
@@ -127,12 +127,15 @@
                                         </select>
                                     </div>
                                 </div>
+
                                 <div class="col-12 col-md-4">
                                     <div class="form-group">
                                         <label for="date_start">Fecha de Inicio:</label>
                                         <input type="date" id="date_start" name="date_start" class="form-control"  required>
                                     </div>
                                 </div>
+
+
                                 <div class="col-12 col-md-4">
                                     <div class="form-group">
                                         <label for="date_end">Fecha de Fin:</label>
@@ -164,10 +167,12 @@
 						<i class="bi bi-pencil-square"></i> &nbsp; ACTUALIZAR
 					   </button>
 					</p>
+                    
                 </form>
             </div>
         </section>
     </main>
+    
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             var reservationDate = '<%= reservation.date_reservation %>';
@@ -239,10 +244,6 @@
     });
 </script>
 
-
-    
-    
-    
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
 
 

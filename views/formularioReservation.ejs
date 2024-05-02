@@ -5,7 +5,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport"
 		content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-	<title>Nuevo prestamo</title>
+	<title>Nueva Reservación</title>
 
 	<!-- Normalize V8.0.1 -->
 	<link rel="stylesheet" href="./css/normalize.css">
@@ -85,11 +85,6 @@
 				<h3 class="text-left">
 					<i class="fas fa-plus fa-fw"></i> &nbsp; NUEVA RESERVA
 				</h3>
-				<p class="text-justify">
-					Bienvenido a la página de generación de reservas. Aquí puedes registrar una nueva reserva con los
-					datos necesarios para tu tour, hotel y cliente. Por favor, completa el siguiente formulario para
-					comenzar.
-				</p>
 			</div>
 
 			<div class="container-fluid">
@@ -98,12 +93,15 @@
 						<legend> <i class="fas fa-user"></i> &nbsp; Información básica</legend>
 						<div class="container-fluid">
 							<div class="row">
+
 								<div class="col-12 col-md-6">
 									<div class="form-group">
 										<label for="date_reservation">Fecha de Reserva:</label>
 										<input type="date" class="form-control" id="date_reservation" name="date_reservation" required>
 									</div>
+
 								</div>
+
 								<div class="col-12 col-md-6">
 									<div class="form-group">
 										<label for="tour">Tour:</label>
@@ -222,7 +220,7 @@
 	
 			alert('Los datos se han guardado correctamente.');
 	
-			window.location.href = '/hoteles';
+			window.location.href = '/reservations';
 	
 			return true; 
 		}

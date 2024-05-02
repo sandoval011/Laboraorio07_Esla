@@ -40,10 +40,40 @@
 
     <!-- Main container -->
     <main class="full-box main-container">
-        <!-- Nav lateral -->
-        <section class="full-box nav-lateral">
-            <!-- Content here -->
-        </section>
+		<!-- Nav lateral -->
+		<section class="full-box nav-lateral">
+			<div class="full-box nav-lateral-bg show-nav-lateral"></div>
+			<div class="full-box nav-lateral-content">
+				<figure class="full-box nav-lateral-avatar">
+					<i class="far fa-times-circle show-nav-lateral"></i>
+					<img src="/assets/avatar/esla.jpg" class="img-fluid" alt="Avatar">
+					<figcaption class="roboto-medium text-center">
+						<%= user.name %> <br><small class="roboto-condensed-light"><%= user.role %></small>
+					</figcaption>
+				</figure>
+				<div class="full-box nav-lateral-bar"></div>
+				<nav class="full-box nav-lateral-menu">
+					<ul>
+						<% sidebarData.forEach(item => { %>
+							<li>
+								<% if (item.submenu) { %>
+									<a href="#" class="nav-btn-submenu">
+										<i class="<%= item.icon %>"></i> &nbsp; <%= item.title %> <i class="fas fa-chevron-down"></i>
+									</a>
+									<ul>
+										<% item.submenu.forEach(subitem => { %>
+											<li><a href="<%= subitem.link %>"><i class="fas fa-plus fa-fw"></i> &nbsp; <%= subitem.title %></a></li>
+										<% }); %>
+									</ul>
+								<% } else { %>
+									<a href="<%= item.link %>"><i class="<%= item.icon %>"></i> &nbsp; <%= item.title %></a>
+								<% } %>
+							</li>
+						<% }); %>
+					</ul>
+				</nav>
+			</div>
+		</section>
 
         <!-- Page content -->
         <section class="full-box page-content">
@@ -59,7 +89,7 @@
 
             <!-- Content here-->
             <div class="container-fluid">
-                <form id="ticketForm" action="/tickets/<%= ticket._id %>/editar" class="form-neon" autocomplete="off"
+                <form id="ticketForm" action="/tickets/<%= ticket._id %>/editar" class="form-neon" autocomplete="off" onsubmit="if(validateForm()) showSuccessAlert()"
                     method="post" onsubmit="return validateForm()">
                     <fieldset>
                         <legend><i class="fas fa-user"></i> &nbsp; Información básica</legend>
@@ -68,7 +98,7 @@
                                 <div class="col-12 col-md-6">
                                     <div class="form-group">
                                         <label for="price" class="bmd-label-floating">Precio:</label>
-                                        <input type="number" class="form-control" id="price" name="price"
+                                        <input type="number" class="form-control" id="price" name="price" step="0.01" min="0" max="99999.99"
                                             value="<%= ticket.price %>" required>
                                     </div>
                                 </div>
@@ -196,12 +226,15 @@
             var formChanged = document.querySelectorAll('.changed').length > 0;
 
             if (formChanged) {
-                alert("¡El formulario se ha actualizado correctamente!");
                 return true;
             } else {
                 alert("No se ha modificado ningún campo. No se puede actualizar.");
                 return false;
             }
+        }
+    
+        function showSuccessAlert() {
+            alert("¡El formulario se ha actualizado correctamente!");
         }
 
         document.addEventListener('DOMContentLoaded', function() {
